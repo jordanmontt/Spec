@@ -242,6 +242,12 @@ SpEasyListViewPresenter >> selectAll [
 	contentView selectAll
 ]
 
+{ #category : 'api - selection' }
+SpEasyListViewPresenter >> selectIndex: aNumber scrollToSelection: aBoolean [ 
+	
+	contentView selectIndex: aNumber scrollToSelection: aBoolean
+]
+
 { #category : 'api' }
 SpEasyListViewPresenter >> sortingBlock: aBlock [
 
