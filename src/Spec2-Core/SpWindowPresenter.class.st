@@ -309,7 +309,6 @@ SpWindowPresenter >> initialize [
 	askOkToClose := true.
 	decorations := true.
 
-	"presenter whenChangedDo: [ :m | self updateTitle ]."
 	self 
 		property: #titleHolder 
 		whenChangedDo: [ :aString | 
