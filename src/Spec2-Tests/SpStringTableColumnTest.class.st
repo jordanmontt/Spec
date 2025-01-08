@@ -10,6 +10,34 @@ Class {
 }
 
 { #category : 'tests' }
+SpStringTableColumnTest >> testDisplayObjectRespectsFormatting [
+
+	| column dateToShow |
+	column := SpStringTableColumn new.
+	column formatted: [ :e | e displayString ].
+
+	dateToShow := Date today.
+
+	self
+		assert: (column readObject: dateToShow)
+		equals: dateToShow displayString
+]
+
+{ #category : 'tests' }
+SpStringTableColumnTest >> testDisplayObjectWithoutFormattingReturnsTheObjectItself [
+
+	| column dateToShow |
+	column := SpStringTableColumn new.
+
+	dateToShow := Date today.
+
+	"It's up to the table to stringify the object later"
+	self
+		assert: (column readObject: dateToShow)
+		equals: dateToShow
+]
+
+{ #category : 'tests' }
 SpStringTableColumnTest >> testIsSortable [
 	|widget|
 	widget := SpStringTableColumn new.

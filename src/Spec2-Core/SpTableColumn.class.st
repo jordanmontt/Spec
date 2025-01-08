@@ -12,7 +12,8 @@ Class {
 		'evaluation',
 		'expandable',
 		'sortFunction',
-		'width'
+		'width',
+		'formattingBlock'
 	],
 	#category : 'Spec2-Core-Widgets-Table',
 	#package : 'Spec2-Core',
@@ -92,6 +93,18 @@ SpTableColumn >> beNotExpandable [
 	expandable := false
 ]
 
+{ #category : 'private' }
+SpTableColumn >> evaluateObject: anObject [
+
+	"Apply the evaluation to the object of the table row.
+	If no evaluation is set, evaluate to the object itself.
+	
+	IMPORTANT: Sorting happens on the results of evaluation and not formatting"
+
+	self evaluation ifNil: [ ^ anObject ].
+	^ self evaluation cull: anObject
+]
+
 { #category : 'api' }
 SpTableColumn >> evaluated: aBlock [
 	"Define how the column will evaluate the element of the table/tree model 
@@ -109,6 +122,22 @@ SpTableColumn >> evaluation [
 	 into a value to display in this column"
 
 	^ evaluation
+]
+
+{ #category : 'private' }
+SpTableColumn >> formatObject: anObject [
+	"Returns the string representation of the argument to display in the table cell"
+
+	formattingBlock ifNil: [ ^ anObject ].
+	^ formattingBlock value: anObject
+]
+
+{ #category : 'api' }
+SpTableColumn >> formatted: aBlock [
+	"Defines how each element is formatted to be shown.
+	By default items will be shown using #asString"
+
+	formattingBlock := aBlock
 ]
 
 { #category : 'testing' }
@@ -161,7 +190,7 @@ SpTableColumn >> isSortable [
 { #category : 'private' }
 SpTableColumn >> readObject: anObject [ 
 
-	^ self evaluation cull: anObject
+	^ self formatObject: (self evaluateObject: anObject)
 ]
 
 { #category : 'api' }

@@ -28,7 +28,11 @@ SpDemoTablePresenter >> defaultLayout [
 
 { #category : 'initialization' }
 SpDemoTablePresenter >> initialize [
-	selectedClasses := OrderedCollection with: ASTCache with: ASTEvaluationTest with: Abort.
+
+	selectedClasses := OrderedCollection
+		                   with: SpDemoTablePage
+		                   with: SpPresenter
+		                   with: Abort.
 	super initialize
 ]
 
