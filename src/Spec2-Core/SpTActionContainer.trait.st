@@ -133,7 +133,7 @@ SpTActionContainer >> internalActions: anActionGroup [
 	internalActionGroup := anActionGroup beRoot
 ]
 
-{ #category : 'enumerating' }
+{ #category : 'api - events' }
 SpTActionContainer >> whenActionsChangedDo: aBlock [
 	"Inform when menu definition changed. 
 	 `aBlock` receives zero arguments."
