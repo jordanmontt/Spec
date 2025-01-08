@@ -31,9 +31,23 @@ SpMenuButtonPresenter class >> title [
 	^ 'MenuButton'
 ]
 
+{ #category : 'api' }
+SpMenuButtonPresenter >> fillWith: anActionGroup [ 
+	| menuPresenter |
+	
+	menuPresenter := self newMenu.
+	SpActionMenuPresenterBuilder new
+		menuPresenter: menuPresenter;
+		visit: anActionGroup.
+		
+	self menu: menuPresenter
+	
+]
+
 { #category : 'initialization' }
 SpMenuButtonPresenter >> initialize [
-	super initialize.
+
+	super initialize
 ]
 
 { #category : 'api' }
