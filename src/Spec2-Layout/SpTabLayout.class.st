@@ -72,3 +72,21 @@ SpTabLayout >> selectIndex: aNumber [
 	self withAdapterDo: [ :anAdapter | 
 		anAdapter selectIndex: aNumber ]
 ]
+
+{ #category : 'events' }
+SpTabLayout >> whenTabSelectedDo: aBlock [
+
+	self announcer 
+		when: SpTabSelected 
+		do: aBlock
+		for: aBlock receiver
+]
+
+{ #category : 'events' }
+SpTabLayout >> whenTabUnselectedDo: aBlock [
+
+	self announcer 
+		when: SpTabUnselected 
+		do: aBlock
+		for: aBlock receiver
+]
