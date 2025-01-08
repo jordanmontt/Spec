@@ -279,6 +279,7 @@ SpPresenter >> allPresentersInFocusOrder [
 { #category : 'accessing' }
 SpPresenter >> announce: anAnnouncement [
 
+	announcer ifNil: [ ^ self ].
 	self announcer announce: anAnnouncement
 ]
 
