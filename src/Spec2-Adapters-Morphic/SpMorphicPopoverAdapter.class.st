@@ -80,6 +80,13 @@ SpMorphicPopoverAdapter >> popup [
 ]
 
 { #category : 'api' }
+SpMorphicPopoverAdapter >> popupModal [
+
+	self flag: #TODO. "This may not have sense on morphic" 
+	^ self popup
+]
+
+{ #category : 'api' }
 SpMorphicPopoverAdapter >> popupPointingTo: aRectangle [
 
 	self widgetDo: [ :w |
