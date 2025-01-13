@@ -520,7 +520,7 @@ SpPresenter >> hasKeyboardFocus [
 SpPresenter >> hide [
 	"hide current presenter making it invisible for the user"
 
-	visible := false
+	self visible: false
 ]
 
 { #category : 'accessing' }
@@ -900,7 +900,7 @@ SpPresenter >> setModelBeforeInitialization: aDomainObject [
 SpPresenter >> show [
 	"show current presenter making it visible for the user"
 
-	visible := true
+	self visible: true
 ]
 
 { #category : 'private' }
@@ -1002,6 +1002,13 @@ SpPresenter >> update [
 
 { #category : 'initialization' }
 SpPresenter >> updatePresenter [
+]
+
+{ #category : 'api' }
+SpPresenter >> visible: aBoolean [
+	"set the visibility status of the presenter (it can be hidden or shown)"
+
+	visible := aBoolean
 ]
 
 { #category : 'TOREMOVE' }
