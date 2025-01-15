@@ -181,12 +181,6 @@ SpAbstractWidgetPresenter class >> isAbstract [
 	^ self = SpAbstractWidgetPresenter
 ]
 
-{ #category : 'testing' }
-SpAbstractWidgetPresenter class >> isWindow [
-
-	^ false
-]
-
 { #category : 'drag and drop' }
 SpAbstractWidgetPresenter >> acceptDrop [
 	^ acceptDrop

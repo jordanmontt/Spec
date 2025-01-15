@@ -31,6 +31,12 @@ SpPopoverPresenter class >> documentFactoryMethodSelector [
 	^ #newPopover
 ]
 
+{ #category : 'visiting' }
+SpPopoverPresenter >> acceptVisitor: aVisitor [
+
+	aVisitor visitPopoverPresenter: self
+]
+
 { #category : 'api' }
 SpPopoverPresenter >> bePositionBottom [
 	"Set the popover to appear at the bottom of the owner (or the presenter set 
@@ -86,6 +92,12 @@ SpPopoverPresenter >> initialize [
 	super initialize.
 	isClosed := true.
 	self bePositionBottom
+]
+
+{ #category : 'testing' }
+SpPopoverPresenter >> isPopover [
+
+	^ true
 ]
 
 { #category : 'private' }
@@ -155,7 +167,8 @@ SpPopoverPresenter >> presenter: aPresenter [
 	"Set the presenter that will be shown by the popover."
 
 	aPresenter owner: self.
-	presenter := aPresenter
+	presenter := aPresenter.
+	presenter initializePopover: self
 ]
 
 { #category : 'api' }

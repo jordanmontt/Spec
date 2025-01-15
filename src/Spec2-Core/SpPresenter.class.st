@@ -203,6 +203,12 @@ SpPresenter >> aboutText [
 	^ aboutText
 ]
 
+{ #category : 'visiting' }
+SpPresenter >> acceptVisitor: aVisitor [
+
+	aVisitor visitPresenter: self
+]
+
 { #category : 'private' }
 SpPresenter >> addAll: aWindow withSpecLayout: aSpec [
 
@@ -570,6 +576,12 @@ SpPresenter >> initialize [
 	self initializePrivateAnnouncements
 ]
 
+{ #category : 'initialization' }
+SpPresenter >> initializePopover: aPopoverPresenter [
+	"This presenter will be shown in a popover, which may need to be 
+	 configured accordingly. Override this method to add that configuration"
+]
+
 { #category : 'initialization - deprecated' }
 SpPresenter >> initializePresenter [
 	"Now, presenters should implement #connectPresenters instead."
@@ -697,6 +709,11 @@ SpPresenter >> isDisplayed [
 ]
 
 { #category : 'testing' }
+SpPresenter >> isPopover [
+	^ false
+]
+
+{ #category : 'testing' }
 SpPresenter >> isRoot [
 	"Answer if this presenter is the root of the presenter hierarchy.
 	 To be root, the presenter has to be contained in a window"
@@ -713,6 +730,12 @@ SpPresenter >> isVisible [
 	 See `SpPresenter>>#show` and `SpPresenter>>#hide`."
 	
 	^ visible value
+]
+
+{ #category : 'testing' }
+SpPresenter >> isWindow [
+
+	^ false
 ]
 
 { #category : 'accessing' }

@@ -50,6 +50,12 @@ SpDialogWindowPresenter class >> adapterName [
 	^ #DialogWindowAdapter
 ]
 
+{ #category : 'visiting' }
+SpDialogWindowPresenter >> acceptVisitor: aVisitor [
+
+	aVisitor visitDialogWindowPresenter: self
+]
+
 { #category : 'private' }
 SpDialogWindowPresenter >> addButton: aButtonPresenter [
 

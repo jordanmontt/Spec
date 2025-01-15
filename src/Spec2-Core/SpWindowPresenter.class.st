@@ -91,6 +91,12 @@ SpWindowPresenter >> aboutTitle [
 	^ self presenter toolName
 ]
 
+{ #category : 'visiting' }
+SpWindowPresenter >> acceptVisitor: aVisitor [
+
+	aVisitor visitWindowPresenter: self
+]
+
 { #category : 'api' }
 SpWindowPresenter >> activate [
 
