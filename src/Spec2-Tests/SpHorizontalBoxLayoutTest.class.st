@@ -81,3 +81,59 @@ SpHorizontalBoxLayoutTest >> testReplaceWithFixedWidthComposed [
 	
 	self assert: layout children second children first equals: replacement
 ]
+
+{ #category : 'tests' }
+SpHorizontalBoxLayoutTest >> testSpSearchInputFieldPresenterResizeCorrectlyWhenWindowHeightDecrease [
+
+    | searchPresenter buttonPresenter windowWidget buttonWidget searchWidget |
+    searchPresenter :=  SpSearchInputFieldPresenter new.
+    buttonPresenter := SpButtonPresenter new label: 'click me'.
+    presenter := SpPresenter new
+                     layout: (SpBoxLayout newLeftToRight
+                              add: searchPresenter;
+                              add: buttonPresenter;
+                              yourself);
+                     yourself.
+    window := presenter open.
+
+    windowWidget := window adapter widget.
+    buttonWidget := buttonPresenter adapter widget.
+    searchWidget := searchPresenter adapter widget.
+
+    self assert: (windowWidget bounds containsRect: buttonWidget bounds).
+    self assert: (windowWidget bounds containsRect: searchWidget bounds).
+
+    windowWidget extent: windowWidget extent - (0 @ 100).
+    self currentWorld doOneCycle.
+
+    self assert: (windowWidget bounds containsRect: buttonWidget bounds).
+    self assert: (windowWidget bounds containsRect: searchWidget bounds)
+]
+
+{ #category : 'tests' }
+SpHorizontalBoxLayoutTest >> testSpSearchInputFieldPresenterResizeCorrectlyWhenWindowWidthDecrease [
+
+    | searchPresenter buttonPresenter windowWidget buttonWidget searchWidget |
+    searchPresenter := SpSearchInputFieldPresenter new.
+    buttonPresenter := SpButtonPresenter new label: 'click me'.
+    presenter := SpPresenter new
+                     layout: (SpBoxLayout newLeftToRight
+                              add: searchPresenter;
+                              add: buttonPresenter;
+                              yourself);
+                     yourself.
+    window := presenter open.
+
+    windowWidget := window adapter widget.
+    buttonWidget := buttonPresenter adapter widget.
+    searchWidget := searchPresenter adapter widget.
+
+    self assert: (windowWidget bounds containsRect: buttonWidget bounds).
+    self assert: (windowWidget bounds containsRect: searchWidget bounds).
+
+    windowWidget extent: windowWidget extent - (100 @ 0).
+    self currentWorld doOneCycle.
+
+    self assert: (windowWidget bounds containsRect: buttonWidget bounds).
+    self assert: (windowWidget bounds containsRect: searchWidget bounds)
+]
