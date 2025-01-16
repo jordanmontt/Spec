@@ -1095,3 +1095,12 @@ SpPresenter >> windowIcon [
 
 	^ windowIcon
 ]
+
+{ #category : 'private' }
+SpPresenter >> withPopoverDo: aBlock [
+	"Execute a block in the first popover in the DOM"
+	
+	self isPopover ifTrue: [ ^ aBlock cull: self ].
+	self owner ifNotNil: [ 
+		self owner withPopoverDo: aBlock ]
+]
