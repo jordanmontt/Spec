@@ -63,7 +63,7 @@ SpMorphicListDataSource >> listModel [
 
 { #category : 'accessing' }
 SpMorphicListDataSource >> menuColumn: column row: rowIndex [
-	| menuPresenter |
+	| menuPresenter concreteMenuPresenter |
 
 	"apply actions"
 	self model actions ifNotNil: [ :actions |
@@ -74,12 +74,13 @@ SpMorphicListDataSource >> menuColumn: column row: rowIndex [
 		self model actions ifNotNil: [ 
 			Error signal: 'You are using contextMenu: and actions: at the same time. Both mechanisms are mutually exclusive.' ].
 		menuPresenter := aContextMenu ].
-
+	
+	concreteMenuPresenter := menuPresenter value.
+	concreteMenuPresenter ifNil: [ ^ nil ].
+	
 	^ SpBindings
 		  value: self model application adapterBindings
 		  during: [ 
-			  | concreteMenuPresenter |
-			  concreteMenuPresenter := menuPresenter value.
 			  concreteMenuPresenter isMorph
 				  ifTrue: [ concreteMenuPresenter ]
 				  ifFalse: [ concreteMenuPresenter build ] ]
