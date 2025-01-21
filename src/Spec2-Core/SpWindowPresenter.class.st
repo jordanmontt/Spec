@@ -59,12 +59,6 @@ SpWindowPresenter class >> defaultTitle [
 	^ 'Untitled window'
 ]
 
-{ #category : 'testing' }
-SpWindowPresenter class >> isWindow [
-
-	^ true
-]
-
 { #category : 'instance creation' }
 SpWindowPresenter class >> presenter: aPresenter [
 	^ (self application: aPresenter application)
@@ -402,6 +396,12 @@ SpWindowPresenter >> isTopWindow [
 ]
 
 { #category : 'testing' }
+SpWindowPresenter >> isWindow [
+
+	^ true
+]
+
+{ #category : 'testing' }
 SpWindowPresenter >> isWindowPresenter [
 	"Answer if current presenter instance is a window presenter"
 	
@@ -455,6 +455,12 @@ SpWindowPresenter >> moveTo: aPoint [
 
 { #category : 'private' }
 SpWindowPresenter >> nearWindow [
+
+	^ self
+]
+
+{ #category : 'private' }
+SpWindowPresenter >> nearWindowLike [
 
 	^ self
 ]

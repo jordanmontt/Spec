@@ -101,6 +101,12 @@ SpPopoverPresenter >> isPopover [
 ]
 
 { #category : 'private' }
+SpPopoverPresenter >> nearWindowLike [
+
+	^ self
+]
+
+{ #category : 'private' }
 SpPopoverPresenter >> popoverClosed [
 
 	isClosed := true
