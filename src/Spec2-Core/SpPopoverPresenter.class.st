@@ -137,6 +137,30 @@ SpPopoverPresenter >> popupModal [
 ]
 
 { #category : 'api' }
+SpPopoverPresenter >> popupModalAndWait [
+	"Shows the popover modaly, relative to `SpPopoverPresenter>>#relativeTo`. 
+	 And wait for an answer"
+	| sem |
+	
+	sem := Semaphore new.
+	self whenClosedDo: [ sem signal ].
+	self popupModal.
+	sem wait
+
+	
+]
+
+{ #category : 'api' }
+SpPopoverPresenter >> popupModalPointingTo: aRectangle [
+	"Shows the popover, relative to `SpPopoverPresenter>>#relativeTo`, and 
+	 pointing to `aRectangle`"
+
+	self adapter ifNil: [ self build ].
+	self withAdapterDo: [ :anAdapter |
+		anAdapter popupModalPointingTo: aRectangle ]
+]
+
+{ #category : 'api' }
 SpPopoverPresenter >> popupPointingTo: aRectangle [
 	"Shows the popover, relative to `SpPopoverPresenter>>#relativeTo`, and 
 	 pointing to `aRectangle`"

@@ -336,6 +336,14 @@ SpPresenter >> applyKeyBindingsFromMenu: aMenuPresenter [
 ]
 
 { #category : 'converting' }
+SpPresenter >> asPopover [
+
+	^ self owner newPopover
+		presenter: self;
+		yourself
+]
+
+{ #category : 'converting' }
 SpPresenter >> asPresenter [
 	"This allows to use presenter instances inside layouts directly"
 
