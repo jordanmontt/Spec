@@ -24,9 +24,7 @@ SpBrowseMethodReferencesCommand class >> defaultName [
 { #category : 'default' }
 SpBrowseMethodReferencesCommand class >> defaultShortcutKey [
 
-	^ $n command shift mac 
-		| $n control shift win
-		| $n control shift unix
+	^ $n shift actionModifier
 ]
 
 { #category : 'default' }

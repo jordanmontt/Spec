@@ -21,9 +21,7 @@ SpBrowseClassCommand class >> defaultDescription [
 { #category : 'default' }
 SpBrowseClassCommand class >> defaultShortcutKey [
 
-	^ $b command mac 
-		| $b control win
-		| $b control unix
+	^ $b actionModifier
 ]
 
 { #category : 'default' }

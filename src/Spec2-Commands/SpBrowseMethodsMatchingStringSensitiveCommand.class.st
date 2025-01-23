@@ -23,9 +23,7 @@ SpBrowseMethodsMatchingStringSensitiveCommand class >> defaultName [
 { #category : 'defaults' }
 SpBrowseMethodsMatchingStringSensitiveCommand class >> defaultShortcutKey [
 
-	^ $u command shift mac
-		| $u control shift win
-		| $u control shift unix
+	^ $u shift actionModifier
 ]
 
 { #category : 'default' }

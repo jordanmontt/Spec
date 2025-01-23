@@ -24,9 +24,7 @@ SpBrowseSendersCommand class >> defaultName [
 { #category : 'default' }
 SpBrowseSendersCommand class >> defaultShortcutKey [
 
-	^ $n command mac 
-		| $n control win
-		| $n control unix
+	^ $n actionModifier
 ]
 
 { #category : 'default' }

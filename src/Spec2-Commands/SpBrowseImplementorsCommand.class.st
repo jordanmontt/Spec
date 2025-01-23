@@ -23,9 +23,7 @@ SpBrowseImplementorsCommand class >> defaultName [
 { #category : 'default' }
 SpBrowseImplementorsCommand class >> defaultShortcutKey [
 
-	^ $m command mac 
-		| $m control win
-		| $m control unix
+	^ $m actionModifier
 ]
 
 { #category : 'default' }
