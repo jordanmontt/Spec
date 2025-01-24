@@ -36,6 +36,12 @@ SpCommand >> asButtonPresenter [
 ]
 
 { #category : 'converting' }
+SpCommand >> asSpecCommand [
+	
+	^ self
+]
+
+{ #category : 'converting' }
 SpCommand >> asToggleButtonPresenter [
 	
 	self configureAsButtonOfClass: SpToggleButtonPresenter. 
