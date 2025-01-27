@@ -28,6 +28,29 @@ SpEasyListViewPresenter class >> example [
 		yourself
 ]
 
+{ #category : 'as yet unclassified' }
+SpEasyListViewPresenter class >> exampleDragAndDrop [
+	| list1 list2 |
+
+	(list1 := self new)
+		items: #( 'abc' 'def' 'xyz' );
+		dragEnabled: true;
+		whenDragStartDo: [ :ann | 
+			ann transfer description: ('Passing "{1}" element' format: ann transfer passenger) ].
+		
+	(list2 := self new)
+		dropEnabled: true;
+		wantsDrop: [ :transfer | transfer passenger allSatisfy: #isString ];
+		acceptDrop: [ :transfer | list2 items: (list2 items, transfer passenger) ].
+				
+	(SpPresenter newApplication: SpApplication new)
+		layout: (SpBoxLayout newLeftToRight
+			add: list1;
+			add: list2;
+			yourself);
+		open
+]
+
 { #category : 'examples' }
 SpEasyListViewPresenter class >> exampleMultipleSelection [
 

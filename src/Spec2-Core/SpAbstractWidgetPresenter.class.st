@@ -181,12 +181,12 @@ SpAbstractWidgetPresenter class >> isAbstract [
 	^ self = SpAbstractWidgetPresenter
 ]
 
-{ #category : 'drag and drop' }
+{ #category : 'api - drag and drop' }
 SpAbstractWidgetPresenter >> acceptDrop [
 	^ acceptDrop
 ]
 
-{ #category : 'drag and drop' }
+{ #category : 'api - drag and drop' }
 SpAbstractWidgetPresenter >> acceptDrop: aBlock [
 	acceptDrop := aBlock
 ]
@@ -258,12 +258,12 @@ SpAbstractWidgetPresenter >> disable [
 	self enabled: false
 ]
 
-{ #category : 'drag and drop' }
+{ #category : 'testing' }
 SpAbstractWidgetPresenter >> dragEnabled [
 	^ dragEnabled
 ]
 
-{ #category : 'drag and drop' }
+{ #category : 'api - drag and drop' }
 SpAbstractWidgetPresenter >> dragEnabled: aBoolean [
 	dragEnabled := aBoolean
 ]
@@ -285,12 +285,12 @@ SpAbstractWidgetPresenter >> dragTransferFor: passenger from: source [
 	^ transfer
 ]
 
-{ #category : 'drag and drop' }
+{ #category : 'testing' }
 SpAbstractWidgetPresenter >> dropEnabled [
 	^ dropEnabled
 ]
 
-{ #category : 'drag and drop' }
+{ #category : 'api - drag and drop' }
 SpAbstractWidgetPresenter >> dropEnabled: aBoolean [
 	dropEnabled := aBoolean
 ]
@@ -388,12 +388,12 @@ SpAbstractWidgetPresenter >> traversePresentersDo: aBlock excluding: excludes [
 	aBlock value: self
 ]
 
-{ #category : 'drag and drop' }
+{ #category : 'api - drag and drop' }
 SpAbstractWidgetPresenter >> wantsDrop [
 	^ wantsDrop
 ]
 
-{ #category : 'drag and drop' }
+{ #category : 'api - drag and drop' }
 SpAbstractWidgetPresenter >> wantsDrop: aBlock [
 	wantsDrop := aBlock
 ]

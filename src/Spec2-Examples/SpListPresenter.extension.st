@@ -33,6 +33,33 @@ SpListPresenter class >> exampleDragAndDrop [
 ]
 
 { #category : '*Spec2-Examples' }
+SpListPresenter class >> exampleDragAndDropSingleList [
+	| list1 collection |
+
+	collection := (1 to: 10) asOrderedCollection.
+	(list1 := self new)
+		items: collection;
+		dragEnabled: true;
+		whenDragStartDo: [ :ann | 
+			ann transfer description: ('Passing "{1}" element' format: ann transfer passenger) ];
+		wantsDrop: [ :transfer | transfer passenger allSatisfy: #isNumber ];
+		acceptDrop: [ :transfer |
+			| index object |
+
+			object := transfer passenger first.
+			index := list1 selection selectedIndex.
+			collection remove: object.
+			collection := (collection first: index), { object }, (collection allButFirst: index).
+			list1 items: collection ].
+
+	SpPresenter new 
+		layout: (SpBoxLayout newLeftToRight
+			add: list1;
+			yourself);
+		open
+]
+
+{ #category : '*Spec2-Examples' }
 SpListPresenter class >> exampleMultipleSelection [
 	<sampleInstance>
 	^ self new
