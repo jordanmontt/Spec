@@ -24,7 +24,7 @@ Class {
 { #category : 'examples' }
 SpDropListTableColumn class >> example [
 
-	^ SpTablePresenter new
+	^ SpEasyColumnViewPresenter new
 		addColumn: (SpStringTableColumn title: 'Name' evaluated: #name);
 		addColumn:
 			((SpDropListTableColumn title: 'Value' evaluated: [ {true . false} ])

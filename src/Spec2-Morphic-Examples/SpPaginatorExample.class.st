@@ -39,7 +39,7 @@ SpPaginatorExample >> initializePresenters [
 SpPaginatorExample >> updatePresenter [
 
 	1 to: 10 do: [ :index | | presenter |
-		presenter := SpListPresenter new
+		presenter := self newList
 			items: (1 to: index);
 			yourself.
 		millerList addPresenter: presenter.

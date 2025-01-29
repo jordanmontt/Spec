@@ -26,7 +26,7 @@ SpGeneratorListModel class >> example [
 		each crTrace.
 		g yield: each asUppercase ] ].
 
-	SpListPresenter new 
+	SpEasyListViewPresenter new 
 		model: (self new 
 			generator: generator;
 			yourself);

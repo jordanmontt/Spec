@@ -669,10 +669,10 @@ SpPresenter >> initializeWindow: aWindowPresenter [
 ]
 
 { #category : 'inspector - extensions' }
-SpPresenter >> inspectionSubPresenters [
+SpPresenter >> inspectionSubPresenters: aBuilder [
 	<inspectorPresentationOrder: 910 title: 'Subpresenters'>
 	
-	^ SpTreePresenter new
+	^ aBuilder newTree
 		roots: self presenters;
 		children: [ :each | each presenters ];
 		expandRoots;

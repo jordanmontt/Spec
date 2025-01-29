@@ -15,10 +15,10 @@ Class {
 }
 
 { #category : 'inspection' }
-SpDemoActivablePresenter class >> inspectionTesting [
+SpDemoActivablePresenter class >> inspectionTesting: aBuilder [
 	<inspectorPresentationOrder: 0 title: 'Testing'>
 
-	^ self new
+	^ self instantiate: self
 ]
 
 { #category : 'instance creation' }
