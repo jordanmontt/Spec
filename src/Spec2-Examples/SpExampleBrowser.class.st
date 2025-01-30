@@ -105,7 +105,7 @@ SpExampleBrowser >> initializePresenters [
 		yourself.
 
 	runButton := self newButton
-		icon: (self iconNamed: #glamorousGo);
+		icon: (self iconNamed: #go);
 		label: 'Run';
 		action: [ self runSelectedExample ];
 		yourself.
