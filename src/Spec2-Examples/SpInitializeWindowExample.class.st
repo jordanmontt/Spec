@@ -49,7 +49,7 @@ SpInitializeWindowExample >> buildPopMessageToolBarItem [
 		
 	^ SpToolbarButtonPresenter new
 		label: 'Pop';
-		icon: (self iconNamed: #glamorousDown);
+		icon: (self iconNamed: #down);
 		help: 'Pop last status bar message';
 		action: [ self popMessage ];
 		yourself
@@ -57,10 +57,10 @@ SpInitializeWindowExample >> buildPopMessageToolBarItem [
 
 { #category : 'private - building' }
 SpInitializeWindowExample >> buildPushMessageToolBarItem [
-		
+
 	^ SpToolbarButtonPresenter new
 		label: 'Push';
-		icon: (self iconNamed: #glamorousUp);
+		icon: (self iconNamed: #up);
 		help: 'Push a new status bar message';
 		action: [ self pushMessage ];
 		yourself

@@ -12,7 +12,7 @@ Class {
 { #category : 'accessing' }
 SpExampleMethodNode >> iconName [
 
-	^ #glamorousExample
+	^ #example
 ]
 
 { #category : 'accessing' }
