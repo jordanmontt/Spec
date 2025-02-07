@@ -14,7 +14,7 @@ Class {
 }
 
 { #category : 'accessing' }
-SpRequestDialog class >> defaultExtent [
+SpRequestDialog class >> defaultPreferredExtent [
 
 	^ 450@170
 ]
