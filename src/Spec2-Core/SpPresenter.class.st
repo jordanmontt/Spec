@@ -566,13 +566,14 @@ SpPresenter >> informUser: aString during: aBlock [
 { #category : 'TOREMOVE' }
 SpPresenter >> initialExtent [
 	
-	"DO NOT USE
-	With Spec 2, SpPresenter was refactored to move all window management to WindowPresenter.
-	From now on, if you want to interact with a window you need to:
-	- Implement #initializeWindow: method (#initializeDialog: for dialogs) to manage window elements before the presenter is opened
-	- Use the method #window or #withWindowDo: to interact with windows after it has been opened.
+	"DO NOT REDEFINE
 	
-	This method cannot be deprecated because during a transition phase we keep this mecanism. "
+	- You should define a defaultPreferredExtent class method return the 
+	extent of your window. 
+	
+	If you want to interact with a window you need to:
+	- Implement #initializeWindow: method (#initializeDialog: for dialogs) to manage window elements before the presenter is opened
+	- Use the method #window or #withWindowDo: to interact with windows after it has been opened. "
 	^ nil
 ]
 
@@ -655,12 +656,15 @@ SpPresenter >> initializeWidgets [
 
 { #category : 'initialization' }
 SpPresenter >> initializeWindow: aWindowPresenter [
-	"override this to set window values before opening. 
-	 You may want to add a menu, a toolbar or a statusbar"
+	"override this to set window values before opening, but always do a super send message. You may want to add a menu, a toolbar or a statusbar."
 
-	"IMPORTANT: Please ovirride this method and set yourself the informations you want in your window.
-	The content of this method is here to help the transition between Spec 1 and 2.
-	In the next Spec version the content of this method will be removed and it will do nothing by default because the goal is to remove the management of all of those informations from Composable to put them in WindowPresenter."
+	"IMPORTANT: please always include
+	initializeWindow: aWindowPresenter
+		
+		super initializeWindow: aWindowPresenter
+		your code
+		
+	"
 
 	aWindowPresenter
 		title: self windowTitle;

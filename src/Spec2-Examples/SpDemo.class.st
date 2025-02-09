@@ -17,6 +17,17 @@ Class {
 }
 
 { #category : 'user interface' }
+SpDemo class >> defaultPreferredExtent [ 
+	
+	| fontWidth rowHeight |
+	fontWidth := (StandardFonts defaultFont widthOfString: 'M').
+	rowHeight := self inputTextHeight.
+
+	^ (90@24) * (fontWidth @ rowHeight)
+	
+]
+
+{ #category : 'user interface' }
 SpDemo class >> menuExamplesOn: aBuilder [
 	"Add a custom menu item to the world menu"
 	<worldMenu>
@@ -100,17 +111,6 @@ SpDemo >> defaultLayout [
 SpDemo >> defaultPage [
 
 	^ self availablePages first.
-]
-
-{ #category : 'api' }
-SpDemo >> initialExtent [
-
-	| fontWidth rowHeight |
-	fontWidth := (StandardFonts defaultFont widthOfString: 'M').
-	rowHeight := self class inputTextHeight.
-
-	^ (90@24) * (fontWidth @ rowHeight)
-	
 ]
 
 { #category : 'initialization' }
