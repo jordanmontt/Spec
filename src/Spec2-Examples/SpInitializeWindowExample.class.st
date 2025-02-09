@@ -20,6 +20,12 @@ Class {
 	#tag : 'Standalone'
 }
 
+{ #category : 'accessing' }
+SpInitializeWindowExample class >> defaultPreferredExtent [ 
+
+	^ 600@400
+]
+
 { #category : 'showing' }
 SpInitializeWindowExample class >> show [
 	<script>
@@ -88,12 +94,6 @@ SpInitializeWindowExample >> defaultLayout [
 	^ SpBoxLayout newTopToBottom
 		  add: text;
 		  yourself
-]
-
-{ #category : 'api' }
-SpInitializeWindowExample >> initialExtent [
- 
-	^ 600@400
 ]
 
 { #category : 'initialization' }
