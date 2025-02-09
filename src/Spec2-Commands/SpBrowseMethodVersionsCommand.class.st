@@ -22,10 +22,10 @@ SpBrowseMethodVersionsCommand class >> shortName [
 
 { #category : 'executing' }
 SpBrowseMethodVersionsCommand >> execute [
-	| target |
 
+	| target |
 	target := self target.
-	Smalltalk tools versionBrowser
+	(self context application toolNamed: #versionBrowser)
 		browseVersionsForClass: target methodClass
 		selector: target selector
 ]
