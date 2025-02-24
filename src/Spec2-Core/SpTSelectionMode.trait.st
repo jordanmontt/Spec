@@ -96,6 +96,15 @@ SpTSelectionMode >> selectItems: aCollection [
 ]
 
 { #category : 'api - selection' }
+SpTSelectionMode >> selectLast [
+	"Select last element in list. 
+	 Useful to avoid selecting by index."
+	
+	 self items ifEmpty: [ ^ self ].
+	^ self selectIndex: self items size
+]
+
+{ #category : 'api - selection' }
 SpTSelectionMode >> selectedItem [
 	"Return selected item."
 
