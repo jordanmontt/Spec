@@ -241,10 +241,21 @@ SpFilteringListPresenter >> resetFilter [
 	self applyFilter: ''
 ]
 
+{ #category : 'api - selection' }
+SpFilteringListPresenter >> selectIndex: aNumber scrollToSelection: aBoolean [ 
+	
+	listPresenter selectIndex: aNumber scrollToSelection: aBoolean
+]
+
 { #category : 'api' }
 SpFilteringListPresenter >> selectItem: anObject [
 	
 	listPresenter selectItem: anObject
+]
+
+{ #category : 'selection' }
+SpFilteringListPresenter >> selectLast [
+	listPresenter selectLast
 ]
 
 { #category : 'api' }
