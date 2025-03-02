@@ -68,8 +68,8 @@ SpPresenterTest >> testLayoutIsDefaultLayoutWhenDefaultLayoutAndDefaultSpecDefin
 
 { #category : 'tests - layout' }
 SpPresenterTest >> testLayoutIsNotSetWhenAlreadyInitialized [
-	| presenterClass |
 	
+	| presenterClass |
 	presenterClass := SpPresenter newAnonymousSubclass.
 	presenterClass compile: 'defaultLayout ^ SpGridLayout new'.
 	presenterClass compile: 'initializePresenters self layout: SpBoxLayout newLeftToRight'.
@@ -78,6 +78,90 @@ SpPresenterTest >> testLayoutIsNotSetWhenAlreadyInitialized [
 	self 
 		assert: presenter layout class 
 		equals: SpBoxLayout
+]
+
+{ #category : 'tests - extent' }
+SpPresenterTest >> testPreferredExtentIsDynamicallyComputed [
+	"This test shows that the defaultPreferredExtent is computed dynamically.
+	It is not stored. 
+	
+	This is only on resize (if resize is allowed) that the last size is stored.
+	See companion test."
+	
+	| presenterClass |
+	presenterClass := SpPresenter newAnonymousSubclass.
+	presenterClass compile: 'defaultLayout ^ SpGridLayout new'.
+	presenterClass compile: 'initializePresenters self layout: SpBoxLayout newLeftToRight'.
+	presenterClass class compile: 'defaultPreferredExtent ^ 500@600'.
+	
+	presenter := presenterClass new.
+	self assert: presenter preferredExtent equals: 500@600.
+	
+	presenterClass class compile: 'defaultPreferredExtent ^ 1000@600'.
+	self assert: presenter preferredExtent equals: 1000@600.
+	
+	
+	
+	
+]
+
+{ #category : 'tests - extent' }
+SpPresenterTest >> testPreferredExtentIsNotStoredOnResizeWhenNotResizable [
+	"This test shows that resize and its effect on the extent being remembered is only 
+	available when resize is true"
+	
+	| presenterClass window |
+	presenterClass := SpPresenter newAnonymousSubclass.
+	presenterClass compile: 'defaultLayout ^ SpGridLayout new'.
+	presenterClass compile: 'initializePresenters self layout: SpBoxLayout newLeftToRight'.
+	presenterClass class compile: 'defaultPreferredExtent ^ 500@600'.
+	
+	presenter := presenterClass new.
+	self assert: presenter preferredExtent equals: 500@600.
+	window := presenter asWindow.
+	window resizable: false. 
+	self deny: window isResizable.
+	window open.
+	
+	window resize: 666@6666.
+	self assert: presenter preferredExtent equals: 500@600.
+	
+	presenterClass class compile: 'defaultPreferredExtent ^ 1000@600'.
+	
+	self assert: presenter class preferredExtent equals: 1000@600.
+	window close.
+	
+	
+	
+	
+]
+
+{ #category : 'tests - extent' }
+SpPresenterTest >> testPreferredExtentIsStoredOnResize [
+	| presenterClass window |
+	presenterClass := SpPresenter newAnonymousSubclass.
+	presenterClass compile: 'defaultLayout ^ SpGridLayout new'.
+	presenterClass compile: 'initializePresenters self layout: SpBoxLayout newLeftToRight'.
+	presenterClass class compile: 'defaultPreferredExtent ^ 500@600'.
+	
+	presenter := presenterClass new.
+	self assert: presenter preferredExtent equals: 500@600.
+	window := presenter asWindow.
+	self assert: window isResizable.
+	window open.
+	window resize: 666@6666.
+	self assert: presenter preferredExtent equals: 666@6666.
+	
+	presenterClass class compile: 'defaultPreferredExtent ^ 1000@600'.
+	"here even if the defaultPreferredExtent changes, it is not taken into account
+	because the resize takes precedence."
+	
+	self assert: presenter class preferredExtent equals: 666@6666.
+	window close.
+	
+	
+	
+	
 ]
 
 { #category : 'tests' }
