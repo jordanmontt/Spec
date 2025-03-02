@@ -77,10 +77,7 @@ SpDemoStandaloneFormPresenter >> defaultLayout [
 				add: 'Scale:'; add: scaleInput; nextRow;
 				add: 'Password:'; add: passwordInput; nextRow;
 				add: 'Remember me:'; add: checkboxInput; nextRow;
-				"SpDatePresenter is exclusive from Morphic backend for the moment"
-				"add: 'Date:';
-				add: #dateInput;
-				nextRow;"
+				add: 'Date:'; add: dateInput; nextRow;
 				add: 'Gender:'; add: (SpBoxLayout newLeftToRight
 					add: maleButton;
 					add: femaleButton;
