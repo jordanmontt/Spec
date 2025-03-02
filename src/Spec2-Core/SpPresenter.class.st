@@ -195,8 +195,10 @@ SpPresenter class >> owner: anOwningPresenter on: aDomainObject [
 
 { #category : 'accessing' }
 SpPresenter class >> preferredExtent [
+	"Note that we do not store here the defaultPreferredExtent because this way this is only when resizing is happening that we store the new size. 
+	It means in particular that if the defaultPreferredExtent is dynamically computed we honore it and not blindly returns the first value."
 	
-	^ customExtent ifNil: [ customExtent := self defaultPreferredExtent ]
+	^ customExtent ifNil: [ self defaultPreferredExtent ]
 ]
 
 { #category : 'accessing' }
@@ -670,7 +672,12 @@ SpPresenter >> initializeWindow: aWindowPresenter [
 		title: self windowTitle;
 		initialExtent: self class preferredExtent;
 		windowIcon: self windowIcon;
-		whenResizingDo: [ :ann | self preferredExtent: ann newSize ].
+		"Pay attention preferredExtent: is used here because it is stateful
+		in the sense that it will set the preferred extent to be remembered.
+		Of course only when resizable allows it."
+
+		whenResizingDo: [ :ann | aWindowPresenter isResizable 
+									ifTrue: [ self preferredExtent: ann newSize ]].
 ]
 
 { #category : 'inspector - extensions' }

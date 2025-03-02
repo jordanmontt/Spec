@@ -542,9 +542,14 @@ SpWindowPresenter >> resizable: aBoolean [
 
 { #category : 'api' }
 SpWindowPresenter >> resize: anExtent [
-
+	"Resize the receiver if it isResizable."
+	
+	"Note that we use the preferredExtent: because this is the API to get the resized extent being remembered."
+	
 	self withAdapterPerformOrDefer: [ :anAdapter | 
-		anAdapter resize: anExtent ]
+		resizable ifTrue: [
+			presenter preferredExtent: anExtent.   
+			anAdapter resize: anExtent ] ]
 ]
 
 { #category : 'api' }
