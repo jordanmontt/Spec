@@ -75,9 +75,11 @@ SpWindow >> okToChange [
 
 { #category : 'private' }
 SpWindow >> taskbarIcon [
+	"If we close the window programatically while the taskbar is been updated the model can be nil in some cases."
 
-	^ self model windowIcon 
-		ifNil: [ super taskbarIcon ]
+	(self model isNil or: [ self model windowIcon isNil ]) ifTrue: [ ^ super taskbarIcon ].
+
+	^ self model windowIcon
 ]
 
 { #category : 'accessing' }
