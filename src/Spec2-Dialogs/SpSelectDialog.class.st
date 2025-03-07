@@ -143,6 +143,12 @@ SpSelectDialog >> items: aCollection [
 		list selectItem: aCollection first ]
 ]
 
+{ #category : 'accessing' }
+SpSelectDialog >> list [
+
+	^ list 
+]
+
 { #category : 'api - showing' }
 SpSelectDialog >> openModal [
 	| dialog |
