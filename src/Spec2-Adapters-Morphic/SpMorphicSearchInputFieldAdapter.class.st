@@ -12,11 +12,13 @@ Class {
 { #category : 'factory' }
 SpMorphicSearchInputFieldAdapter >> buildWidget [
 	| textMorph iconsContainer |
-	
+
 	textMorph := super buildWidget.
+	textMorph submorphsDo: [ :aMorph | 
+		aMorph setProperty: #constraints toValue: SpOverlayConstraints new ].
 
 	iconsContainer := Morph new
-		extent: 12 @ 12;
+		extent: 14 @ 12;
 		color: Color transparent;
 		changeTableLayout;
 		listDirection: #topToBottom;
@@ -25,23 +27,19 @@ SpMorphicSearchInputFieldAdapter >> buildWidget [
 			actionSelector: #clearText;
 			labelGraphic: (self iconNamed: #windowCloseInactive);
 			color: Color transparent;
-			extent: 16 @ 8;
+			extent: 12 @ 12;
 			borderWidth: 0;
+			yourself);
+		setProperty: #constraints toValue: (SpOverlayConstraints new
+			beOverlay;
+			hAlignEnd;
+			vAlignStart;
 			yourself);
 		yourself.
 
-	"With the layout frame I set next it, the arrows will be at the top right of the 
-	 text morph. We should be able to make it vertically centered but I don't know 
-	 how to do that with morphs. If someone knows, please do :)"
 	textMorph
-		changeProportionalLayout;
-		addMorph: iconsContainer
-			fullFrame: (LayoutFrame identity
-				bottomFraction: 0;
-				leftFraction: 1;
-				topOffset: 4;
-				leftOffset: -25;
-				yourself).
+		layoutPolicy: SpMorphicOverlayLayout new;
+		addMorph: iconsContainer.
 
 	^ textMorph
 ]
