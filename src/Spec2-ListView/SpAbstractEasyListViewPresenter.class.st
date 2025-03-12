@@ -101,7 +101,7 @@ SpAbstractEasyListViewPresenter >> scrollBarStyles [
 	^ contentView scrollBarStyles
 ]
 
-{ #category : 'selection' }
+{ #category : 'api - selection' }
 SpAbstractEasyListViewPresenter >> selectFirst [
 	
 	contentView selectFirst
