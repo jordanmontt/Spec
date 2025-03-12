@@ -52,9 +52,7 @@ SpAbstractMessageDialog >> calculateLabelHeight [
 { #category : 'private' }
 SpAbstractMessageDialog >> calculateLabelHeightForTextWithoutMargin: aText forExtent: anExtent [
 	
-	"We have a minimal height "
 	aText ifEmpty: [ ^ self singleLineDefaultHeight ].
-
 	^ (aText asText lineHeightsWrappingAtWidth: anExtent x - 20) sum
 	
 ]
@@ -76,14 +74,15 @@ SpAbstractMessageDialog >> defaultLayout [
 
 { #category : 'accessing' }
 SpAbstractMessageDialog >> defaultTitle [
-
+	"This is the title of the dialog not the window"
+	
 	self subclassResponsibility 
 ]
 
 { #category : 'TOREMOVE' }
 SpAbstractMessageDialog >> extent [
 
-	^ initialExtent ifNil: [ self class defaultExtent ]
+	^ initialExtent ifNil: [ self preferredExtent ]
 ]
 
 { #category : 'TOREMOVE' }
@@ -124,16 +123,15 @@ SpAbstractMessageDialog >> initializePresenters [
 { #category : 'initialization' }
 SpAbstractMessageDialog >> initializeWindow: aWindowPresenter [
 
-	aWindowPresenter
-		title: self title;
-		initialExtent: self extent
+	super initializeWindow: aWindowPresenter.
+	aWindowPresenter title: self title
 ]
 
 { #category : 'initialization' }
 SpAbstractMessageDialog >> initializeWindowExtent: aDialogWindowPresenter [
 	
 	aDialogWindowPresenter initialExtent:
-		(self adjustExtentToLabelHeight: self class defaultExtent)
+		(self adjustExtentToLabelHeight: self preferredExtent)
 ]
 
 { #category : 'api' }

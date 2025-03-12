@@ -24,6 +24,12 @@ Class {
 }
 
 { #category : 'examples' }
+SpSimpleFileEditPresenter class >> defaultPreferredExtent [ 
+
+	^ 600@600
+]
+
+{ #category : 'examples' }
 SpSimpleFileEditPresenter class >> example [
 	<script>
 	
@@ -82,14 +88,6 @@ SpSimpleFileEditPresenter >> initializePresenters [
 	codeText takeKeyboardFocus.
 ]
 
-{ #category : 'layout' }
-SpSimpleFileEditPresenter >> initializeWindow: aWindowPresenter [
-
-	aWindowPresenter
-		title: 'File edit';
-		initialExtent: 600@600
-]
-
 { #category : 'accessing' }
 SpSimpleFileEditPresenter >> label [
 
@@ -139,4 +137,10 @@ SpSimpleFileEditPresenter >> textInput [
 SpSimpleFileEditPresenter >> textInput: anObject [
 
 	codeText := anObject
+]
+
+{ #category : 'layout' }
+SpSimpleFileEditPresenter >> windowTitle [
+	
+	^ 'File edit'
 ]

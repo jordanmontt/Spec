@@ -22,12 +22,6 @@ SpCheckBoxPresenter class >> documentFactoryMethodSelector [
 	^ #newCheckBox
 ]
 
-{ #category : 'specs' }
-SpCheckBoxPresenter class >> title [
-
-	^ 'Checkbox Button'
-]
-
 { #category : 'TOREMOVE' }
 SpCheckBoxPresenter >> labelOnLeft [
 
@@ -38,4 +32,10 @@ SpCheckBoxPresenter >> labelOnLeft [
 SpCheckBoxPresenter >> labelOnRight [
 
 	^ self changed: #labelOnRight with: #()
+]
+
+{ #category : 'accessing' }
+SpCheckBoxPresenter >> windowTitle [
+
+	^ 'Checkbox Button'
 ]

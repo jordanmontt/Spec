@@ -145,7 +145,7 @@ SpApplicationWithToolbar >> text [
 ]
 
 { #category : 'api' }
-SpApplicationWithToolbar >> title [
+SpApplicationWithToolbar >> windowTitle [
 
 	^ 'Text editor'
 ]

@@ -32,12 +32,6 @@ SpButtonPresenter class >> documentFactoryMethodSelector [
 	^ #newButton
 ]
 
-{ #category : 'specs' }
-SpButtonPresenter class >> title [
-
-	^ 'Button'
-]
-
 { #category : 'api' }
 SpButtonPresenter >> action [
 	"Answer the block performed when the button is clicked."
@@ -221,4 +215,10 @@ SpButtonPresenter >> whenStateChangedDo: aBlock [
 	"set a block to perform after that the button has been aclicked, and its action performed"
 
 	self property: #state whenChangedDo: aBlock
+]
+
+{ #category : 'accessing' }
+SpButtonPresenter >> windowTitle [
+
+	^ 'Button'
 ]

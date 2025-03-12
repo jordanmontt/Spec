@@ -28,6 +28,12 @@ Class {
 	#tag : 'Job'
 }
 
+{ #category : 'accessing' }
+SpJobPresenter class >> defaultPreferredExtent [
+
+	^ 500@70
+]
+
 { #category : 'examples' }
 SpJobPresenter class >> example [
 	| job |
@@ -68,8 +74,8 @@ SpJobPresenter >> initializePresenters [
 { #category : 'initialization' }
 SpJobPresenter >> initializeWindow: aWindowPresenter [ 
 
+	super initializeWindow: aWindowPresenter.
 	aWindowPresenter 
-		initialExtent: 500@70;
 		withoutDecorations;
 		beNotResizable;
 		centered

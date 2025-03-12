@@ -85,7 +85,7 @@ SpSearchInputFieldOptionsPresenter >> initializeSearchTypePresenters [
 	substringOptionButton associatedRadioButtons: { exactOptionButton.  regexpOptionButton }.
 	
 	caseCheckBox := self newCheckBox 
-		label: 'Case';
+		label: 'Match case';
 		state: false;
 		help: 'Use match case';
 		yourself.

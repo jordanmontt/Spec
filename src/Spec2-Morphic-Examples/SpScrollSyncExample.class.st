@@ -102,3 +102,9 @@ SpScrollSyncExample >> syncMorphPosition [
 SpScrollSyncExample >> text [
 	^ text
 ]
+
+{ #category : 'accessing' }
+SpScrollSyncExample >> windowTitle [ 
+
+	^self class title
+]

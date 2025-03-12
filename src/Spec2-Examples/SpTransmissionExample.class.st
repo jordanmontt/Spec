@@ -16,6 +16,12 @@ Class {
 	#tag : 'Demo-Transmission'
 }
 
+{ #category : 'accessing' }
+SpTransmissionExample class >> defaultPreferredExtent [
+
+	^  800 @ 600
+]
+
 { #category : 'showing' }
 SpTransmissionExample class >> open [ 
 	<script>
@@ -196,9 +202,7 @@ SpTransmissionExample >> initializeProtocolsPresenter [
 ]
 
 { #category : 'initialization' }
-SpTransmissionExample >> initializeWindow: aWindowPresenter [
+SpTransmissionExample >> windowTitle [ 
 
-	aWindowPresenter
-		title: 'Transmission example browser';
-		initialExtent: 800 @ 600
+	^ 'Transmission example browser'
 ]

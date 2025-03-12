@@ -37,7 +37,7 @@ SpMorphicWindowAdapter >> addPresenterIn: aWindow withSpecLayout: aSpec [
 	self presenter initialPosition ifNotNil: [ :position | 
 		aWindow position: position ].
 	self presenter initialExtent ifNotNil: [ :extent | 
-		aWindow extent: extent ].
+		aWindow extent: extent scaledByDisplayScaleFactor ].
 	self presenter hasDecorations ifFalse: [ aWindow removeLabelArea ].
 	self presenter whenDecorationsChangedDo: [ :aBoolean | 
 		aBoolean
@@ -77,6 +77,12 @@ SpMorphicWindowAdapter >> buildWidget [
 SpMorphicWindowAdapter >> cancelled [
 
 	^ false
+]
+
+{ #category : 'window management' }
+SpMorphicWindowAdapter >> centerIfNeeded [
+
+	self presenter isCentered ifTrue: [ self centered ]
 ]
 
 { #category : 'protocol' }
@@ -208,10 +214,9 @@ SpMorphicWindowAdapter >> openWithDeferredAction: aBlock [
 	self flag: #TODO. "This and its children are more or less the same, it needs to be 
 	revisited looking oportunities to improve the code reuse :("
 	self widget openInWorld.
-	self presenter initialPosition 
-		ifNotNil: [ :aPosition | self widget position: aPosition ].
-	self presenter isCentered 
-		ifTrue: [ self centered ].
+	self presenter initialPosition ifNotNil: [ :aPosition |
+		self widget position: aPosition ].
+	self centerIfNeeded.
 	self presenter presenter takeKeyboardFocus.
 	self windowIsOpened.
 	aBlock value
@@ -232,8 +237,7 @@ SpMorphicWindowAdapter >> rebuildWithSpecLayout: aSpec [
 SpMorphicWindowAdapter >> resize: aPoint [
 
 	widget extent: aPoint.
-	self presenter isCentered
-		ifTrue: [ self centered ]
+	self centerIfNeeded
 ]
 
 { #category : 'window management' }

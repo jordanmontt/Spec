@@ -88,6 +88,6 @@ SpOpenOnIntExample >> text [
 ]
 
 { #category : 'accessing' }
-SpOpenOnIntExample >> title [
+SpOpenOnIntExample >> windowTitle [
 	^ 'OpenOnIntExample'
 ]

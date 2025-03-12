@@ -51,7 +51,7 @@ SpChooserPresenter class >> examplePackages [
 	^ (self
 		sourceItems: self packageOrganizer packages
 		chosenItems: { (self packageOrganizer packageNamed: 'Spec2-CommonWidgets') }
-		displayBlock: #packageName)
+		displayBlock: [:each | each name ] )
 		  open
 ]
 
@@ -89,12 +89,6 @@ SpChooserPresenter class >> sourceItems: sourceItems displayBlock: displayBlock 
 		  displayBlock: displayBlock;
 		  sourceItems: sourceItems;
 		  yourself
-]
-
-{ #category : 'specs' }
-SpChooserPresenter class >> title [
-
-	^ 'Choose items'
 ]
 
 { #category : 'actions' }
@@ -296,4 +290,10 @@ SpChooserPresenter >> targetLabel: aString [
 SpChooserPresenter >> targetList [
 
 	^ targetList
+]
+
+{ #category : 'accessing' }
+SpChooserPresenter >> windowTitle [
+
+	^ 'Choose items'
 ]

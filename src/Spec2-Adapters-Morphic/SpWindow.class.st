@@ -40,12 +40,6 @@ SpWindow >> announceWillClose [
 ]
 
 { #category : 'open/close' }
-SpWindow >> close [ 
-
-	super close.
-]
-
-{ #category : 'open/close' }
 SpWindow >> deleteDiscardingChanges [
 
 	self announceWillClose ifFalse: [ ^ self ].
@@ -55,16 +49,18 @@ SpWindow >> deleteDiscardingChanges [
 { #category : 'open/close' }
 SpWindow >> extent: aPoint [ 
 	| announcement oldExtent |
-
 	oldExtent := self extent. 
 	super extent: aPoint.
-	announcement := SpWindowResizing new
-		window: self;
-		oldSize: oldExtent;
-		newSize: aPoint;
-		yourself.
-	self announce: announcement.
-	self currentWorld announcer announce: announcement
+	
+	oldExtent = aPoint
+		ifFalse: [  	
+			announcement := SpWindowResizing new
+				window: self;
+				oldSize: oldExtent;
+				newSize: aPoint;
+				yourself.
+			self announce: announcement.
+			self currentWorld announcer announce: announcement ]
 ]
 
 { #category : 'testing' }
@@ -81,9 +77,11 @@ SpWindow >> okToChange [
 
 { #category : 'private' }
 SpWindow >> taskbarIcon [
+	"If we close the window programatically while the taskbar is been updated the model can be nil in some cases."
 
-	^ self model windowIcon 
-		ifNil: [ super taskbarIcon ]
+	(self model isNil or: [ self model windowIcon isNil ]) ifTrue: [ ^ super taskbarIcon ].
+
+	^ self model windowIcon
 ]
 
 { #category : 'accessing' }

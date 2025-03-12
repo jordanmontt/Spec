@@ -16,6 +16,12 @@ Class {
 	#tag : 'ExampleBrowser'
 }
 
+{ #category : 'accessing' }
+SpExampleBrowser class >> defaultPreferredExtent [
+
+	^ 800@600
+]
+
 { #category : 'user interface' }
 SpExampleBrowser class >> menuExamplesOn: aBuilder [
 	"Add a custom menu item to the world menu"
@@ -99,7 +105,7 @@ SpExampleBrowser >> initializePresenters [
 		yourself.
 
 	runButton := self newButton
-		icon: (self iconNamed: #glamorousGo);
+		icon: (self iconNamed: #go);
 		label: 'Run';
 		action: [ self runSelectedExample ];
 		yourself.
@@ -109,14 +115,6 @@ SpExampleBrowser >> initializePresenters [
 
 	code := self newCode.
 	code beNotEditable
-]
-
-{ #category : 'initialization' }
-SpExampleBrowser >> initializeWindow: aWindow [
-
-	aWindow
-		title: 'Spec Example Browser';
-		initialExtent: 800@600
 ]
 
 { #category : 'initialization' }
@@ -175,4 +173,9 @@ SpExampleBrowser >> updatePresenter [
 
 	list items: self allPresentersWithExamples.
 	runButton enabled: false
+]
+
+{ #category : 'initialization' }
+SpExampleBrowser >> windowTitle [
+	^  'Spec Example Browser'
 ]

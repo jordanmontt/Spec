@@ -28,12 +28,6 @@ SpClassMethodBrowser class >> example [
 	^ example
 ]
 
-{ #category : 'specs' }
-SpClassMethodBrowser class >> title [
-
-	^ 'Class Method Browser'
-]
-
 { #category : 'api' }
 SpClassMethodBrowser >> classes: aList [
 	classListPresenter items = aList ifTrue: [ ^ self ].
@@ -80,4 +74,10 @@ SpClassMethodBrowser >> initializePresenters [
 		add: classListPresenter;
 		add: methodListPresenter;
 		add: textPresenter
+]
+
+{ #category : 'initialization' }
+SpClassMethodBrowser >> windowTitle [ 
+
+	^ 'Class Method Browser'
 ]

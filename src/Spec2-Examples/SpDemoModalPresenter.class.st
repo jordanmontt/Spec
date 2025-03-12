@@ -22,11 +22,6 @@ SpDemoModalPresenter class >> open [
 	self new open
 ]
 
-{ #category : 'specs' }
-SpDemoModalPresenter class >> title [
-	^ 'Modals demo'
-]
-
 { #category : 'accessing' }
 SpDemoModalPresenter >> button1 [
 	^ button1
@@ -59,4 +54,9 @@ SpDemoModalPresenter >> initializePresenters [
 		action: [ SpDemoModal1Presenter new openModal ].
 	button2 label: 'Open 2';
 		action: [ SpDemoModal2Presenter new openModal ]
+]
+
+{ #category : 'accessing' }
+SpDemoModalPresenter >> windowTitle [
+	^ 'Modals demo'
 ]

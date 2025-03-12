@@ -140,12 +140,6 @@ SpCodePresenter class >> exampleOverridingContextMenu [
 		open
 ]
 
-{ #category : 'specs' }
-SpCodePresenter class >> title [
-
-	^ 'Code'
-]
-
 { #category : 'api' }
 SpCodePresenter >> allowingContextMenu [
 	"Indicates the default context menu should be shown (this is the default behaviour). 
@@ -803,6 +797,12 @@ SpCodePresenter >> whenSyntaxHighlightThemeChangedDo: aBlock [
 	"Set a block to perform when the syntax highlight theme is changed"
 
 	self property: #syntaxHighlightTheme whenChangedDo: aBlock
+]
+
+{ #category : 'private' }
+SpCodePresenter >> windowTitle [
+
+	^ 'Code'
 ]
 
 { #category : 'api' }

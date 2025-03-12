@@ -118,6 +118,6 @@ SpOpenOnStringExample >> textToReset [
 ]
 
 { #category : 'accessing' }
-SpOpenOnStringExample >> title [
+SpOpenOnStringExample >> windowTitle [
 	^ 'OpenOnStringExample'
 ]

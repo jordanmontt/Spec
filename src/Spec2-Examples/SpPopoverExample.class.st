@@ -21,6 +21,12 @@ Class {
 	#tag : 'Standalone'
 }
 
+{ #category : 'accessing' }
+SpPopoverExample class >> defaultPreferredExtent [
+
+	^ 800@600
+]
+
 { #category : 'showing' }
 SpPopoverExample class >> open [
 	<script>
@@ -60,14 +66,6 @@ SpPopoverExample >> initializePresenters [
 ]
 
 { #category : 'initialization' }
-SpPopoverExample >> initializeWindow: aWindowPresenter [
-
-	aWindowPresenter 
-		title: 'Popover example';
-		initialExtent: 800@600
-]
-
-{ #category : 'initialization' }
 SpPopoverExample >> showPopover: aPosition relativeTo: aPresenter [
 
 	popover ifNotNil: [ popover dismiss ].
@@ -86,4 +84,9 @@ SpPopoverExample >> showPopover: aPosition relativeTo: aPresenter [
 				yourself);
 			yourself);
 		popup
+]
+
+{ #category : 'initialization' }
+SpPopoverExample >> windowTitle [
+	^ 'Popover example'
 ]

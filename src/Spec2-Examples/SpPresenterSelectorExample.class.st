@@ -47,7 +47,7 @@ SpPresenterSelectorExample >> initializePresenters [
 ]
 
 { #category : 'initialization' }
-SpPresenterSelectorExample >> initializeWindow: aWindowPresenter [
+SpPresenterSelectorExample >> windowTitle [
 
-	aWindowPresenter title: 'Presenter Selector Example'
+	^  'Presenter Selector Example'
 ]

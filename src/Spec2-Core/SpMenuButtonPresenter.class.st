@@ -25,12 +25,6 @@ SpMenuButtonPresenter class >> documentFactoryMethodSelector [
 	^ #newMenuButton
 ]
 
-{ #category : 'specs' }
-SpMenuButtonPresenter class >> title [
-
-	^ 'MenuButton'
-]
-
 { #category : 'api' }
 SpMenuButtonPresenter >> fillWith: anActionGroup [ 
 	| menuPresenter |
@@ -74,4 +68,10 @@ SpMenuButtonPresenter >> whenMenuChangedDo: aBlock [
 	 - the announcement triggering this action"
 
 	self property: #menu whenChangedDo: aBlock
+]
+
+{ #category : 'api - events' }
+SpMenuButtonPresenter >> windowTitle [
+
+	^ 'MenuButton'
 ]

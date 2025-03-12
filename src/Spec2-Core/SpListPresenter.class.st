@@ -34,7 +34,7 @@ SpListPresenter class >> adapterName [
 ]
 
 { #category : 'specs' }
-SpListPresenter class >> title [
+SpListPresenter class >> windowTitle [
 
 	^ 'List'
 ]

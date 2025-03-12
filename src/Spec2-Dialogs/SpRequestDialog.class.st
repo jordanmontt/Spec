@@ -14,7 +14,7 @@ Class {
 }
 
 { #category : 'accessing' }
-SpRequestDialog class >> defaultExtent [
+SpRequestDialog class >> defaultPreferredExtent [
 
 	^ 450@170
 ]
@@ -79,11 +79,37 @@ SpRequestDialog class >> exampleMultiLineLabel [
 		openDialog
 ]
 
+{ #category : 'examples' }
+SpRequestDialog class >> examplePassword [
+
+	self new
+		bePassword;
+		title: 'Secret request example';
+		label: 'The meaning of life?';
+		text: 'I am tempted to say 42...';
+		acceptLabel: 'I know!';
+		cancelLabel: 'Cancel';
+		onAccept: [ :dialog | dialog presenter inform: dialog presenter text ];
+		openDialog
+]
+
 { #category : 'private' }
 SpRequestDialog >> accept [
 
 	self validateAnswer ifFalse: [ ^ self ].
 	super accept
+]
+
+{ #category : 'api' }
+SpRequestDialog >> bePassword [
+
+	textInput bePassword
+]
+
+{ #category : 'api' }
+SpRequestDialog >> beText [
+
+	textInput beText
 ]
 
 { #category : 'initialization' }
@@ -145,6 +171,12 @@ SpRequestDialog >> initializeWindow: aWindowPresenter [
 	
 	super initializeWindow: aWindowPresenter.
 	aWindowPresenter whenOpenedDo: [ textInput takeKeyboardFocus; selectAll  ]
+]
+
+{ #category : 'testing' }
+SpRequestDialog >> isPassword [
+	
+	^ textInput isPassword
 ]
 
 { #category : 'api - showing' }

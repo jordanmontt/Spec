@@ -19,12 +19,6 @@ SpTestingPresenter class >> defaultLayout [
 		yourself
 ]
 
-{ #category : 'specs' }
-SpTestingPresenter class >> title [
-
-	^ 'You should not see me !'
-]
-
 { #category : 'accessing' }
 SpTestingPresenter >> getText [
 	^ Text new
@@ -39,4 +33,10 @@ SpTestingPresenter >> initializePresenters [
 SpTestingPresenter >> list [
 
 	^ list
+]
+
+{ #category : 'accessing' }
+SpTestingPresenter >> windowTitle [ 
+
+	^ 'You should not see me !'
 ]

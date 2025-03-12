@@ -9,5 +9,5 @@ SystemNavigation >> browse: anObject [
 { #category : '*Spec2-Code-Commands' }
 SystemNavigation >> inspect: anObject [
 
-	self tools inspector inspect: anObject
+	(self  tools toolNamed: #inspector) inspect: anObject
 ]

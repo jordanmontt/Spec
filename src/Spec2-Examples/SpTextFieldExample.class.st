@@ -13,17 +13,17 @@ Class {
 	#tag : 'Standalone'
 }
 
+{ #category : 'accessing' }
+SpTextFieldExample class >> defaultPreferredExtent [ 
+
+	^ 900@550
+]
+
 { #category : 'examples' }
 SpTextFieldExample class >> example [
 
 	<sampleInstance>
 	^ self new open
-]
-
-{ #category : 'specs' }
-SpTextFieldExample class >> title [
-
-	^ 'Text Field Example'
 ]
 
 { #category : 'initialization' }
@@ -43,11 +43,6 @@ SpTextFieldExample >> defaultLayout [
 		  add: textField expand: false;
 		  add: methodBrowser;
 		  yourself
-]
-
-{ #category : 'api' }
-SpTextFieldExample >> initialExtent [
-	^ 900@550
 ]
 
 { #category : 'initialization' }
@@ -71,4 +66,10 @@ SpTextFieldExample >> methodBrowser [
 SpTextFieldExample >> textField [
 
 	^ textField
+]
+
+{ #category : 'accessing' }
+SpTextFieldExample >> windowTitle [ 
+
+	^ 'Text Field Example'
 ]

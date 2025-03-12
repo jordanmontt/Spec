@@ -100,3 +100,9 @@ SpDynamicWidgetChange >> initializePresenters [
 	bottom 
 		items: (1 to: 10) asOrderedCollection.
 ]
+
+{ #category : 'accessing' }
+SpDynamicWidgetChange >> windowTitle [
+
+	^ 'Dynamic Widget Change Example'
+]

@@ -60,3 +60,9 @@ SpObjectInspector >> updatePresenter [
 
 	variablesList items: inspectedObject class allSlots
 ]
+
+{ #category : 'accessing' }
+SpObjectInspector >> windowTitle [
+
+	^ 'Object Inspector'
+]

@@ -15,6 +15,12 @@ Class {
 	#package : 'Spec2-Dialogs'
 }
 
+{ #category : 'accessing' }
+SpInformUserDialog class >> defaultPreferredExtent [
+
+	^ 600@100
+]
+
 { #category : 'documentation' }
 SpInformUserDialog class >> documentFactoryMethodSelector [
 	
@@ -37,12 +43,6 @@ SpInformUserDialog class >> exampleModal [
 		title: 'Example Progress';
 		label: 'You are seeing a progress dialog! Press escape!';
 		openModal
-]
-
-{ #category : 'accessing' }
-SpInformUserDialog class >> extent [
-
-	^ 600@100
 ]
 
 { #category : 'private - actions' }
@@ -111,14 +111,6 @@ SpInformUserDialog >> initializePresenters [
 		yourself)
 ]
 
-{ #category : 'initialization' }
-SpInformUserDialog >> initializeWindow: aWindowPresenter [
-
-	aWindowPresenter 
-		title: self title;
-		initialExtent: self class extent
-]
-
 { #category : 'api' }
 SpInformUserDialog >> label [
 
@@ -139,13 +131,13 @@ SpInformUserDialog >> reset [
 ]
 
 { #category : 'api' }
-SpInformUserDialog >> title [
-
-	^ title
-]
-
-{ #category : 'api' }
 SpInformUserDialog >> title: aString [
 
 	title := aString
+]
+
+{ #category : 'api' }
+SpInformUserDialog >> windowTitle [
+
+	^ title
 ]

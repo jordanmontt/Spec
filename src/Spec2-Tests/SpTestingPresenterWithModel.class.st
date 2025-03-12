@@ -50,7 +50,7 @@ SpTestingPresenterWithModel >> modelChanged [
 ]
 
 { #category : 'api' }
-SpTestingPresenterWithModel >> title [
+SpTestingPresenterWithModel >> windowTitle [
 
 	^ 'Point'
 ]

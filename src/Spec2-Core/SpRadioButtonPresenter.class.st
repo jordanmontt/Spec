@@ -25,12 +25,6 @@ SpRadioButtonPresenter class >> documentFactoryMethodSelector [
 	^ #newRadioButton
 ]
 
-{ #category : 'specs' }
-SpRadioButtonPresenter class >> title [
-
-	^ 'Radio Button'
-]
-
 { #category : 'api' }
 SpRadioButtonPresenter >> associatedRadioButtons [
 	"Answer the collection of radio buttons associated (grouped) to this one.
@@ -106,4 +100,10 @@ SpRadioButtonPresenter >> state: aValue [
 	aValue ifTrue: [ 
 		associatedRadioButtons 
 			do: [ :e | e state: false ] ].
+]
+
+{ #category : 'api' }
+SpRadioButtonPresenter >> windowTitle [
+
+	^ 'Radio Button'
 ]

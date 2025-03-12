@@ -28,12 +28,6 @@ SpToggleButtonPresenter class >> documentFactoryMethodSelector [
 	^ #newToggleButton
 ]
 
-{ #category : 'specs' }
-SpToggleButtonPresenter class >> title [
-
-	^ 'Toggle Button'
-]
-
 { #category : 'api' }
 SpToggleButtonPresenter >> action [ 
 	"Answer the action to execute when button is pressed.
@@ -109,4 +103,10 @@ SpToggleButtonPresenter >> whenIconChangedDo: aBlock [
 	 - the announcement triggering this action"
 
 	self property: #icon whenChangedDo: aBlock
+]
+
+{ #category : 'accessing' }
+SpToggleButtonPresenter >> windowTitle [
+
+	^ 'Toggle Button'
 ]

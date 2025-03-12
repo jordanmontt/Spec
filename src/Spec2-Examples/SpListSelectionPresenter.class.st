@@ -87,3 +87,9 @@ SpListSelectionPresenter >> updateText [
 		defer: [ textModel1 text: indexes.
 			textModel2 text: items ] ] fork
 ]
+
+{ #category : 'accessing' }
+SpListSelectionPresenter >> windowTitle [
+
+	^ 'List Selection Examples'
+]

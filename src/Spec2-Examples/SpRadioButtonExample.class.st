@@ -23,12 +23,6 @@ SpRadioButtonExample class >> example [
 	^ self new open
 ]
 
-{ #category : 'specs' }
-SpRadioButtonExample class >> title [
-
-	^ 'Radio Button Example'
-]
-
 { #category : 'initialization' }
 SpRadioButtonExample >> connectPresenters [
 
@@ -80,4 +74,10 @@ SpRadioButtonExample >> updateLabel [
 								<< ' : ';
 								<< (button state ifTrue: [ 'V' ] ifFalse: [ 'X' ]) ]
 						separatedBy: [ s << ' - ' ] ])
+]
+
+{ #category : 'updating' }
+SpRadioButtonExample >> windowTitle [
+
+	^ 'Radio Button Example'
 ]

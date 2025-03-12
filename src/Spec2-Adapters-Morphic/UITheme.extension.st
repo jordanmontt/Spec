@@ -10,7 +10,7 @@ UITheme >> modalBackdropColor [
 { #category : '*Spec2-Adapters-Morphic' }
 UITheme >> paginatorSelectionColor [
 
-	^ self darkBaseColor alpha: 0.8
+	^ colorPalette paginatorSelectionColor 
 ]
 
 { #category : '*Spec2-Adapters-Morphic' }

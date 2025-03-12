@@ -49,12 +49,6 @@ SpStyleVariable >> preferredValueWith: anObject [
 		ifFalse: [ self value ]
 ]
 
-{ #category : 'evaluating' }
-SpStyleVariable >> scaledValue [
-
-	^ self nonscaledValue
-]
-
 { #category : 'private' }
 SpStyleVariable >> toColor: aColorOrSymbol [
 

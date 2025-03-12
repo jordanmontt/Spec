@@ -24,12 +24,6 @@ SpToolbarToggleButtonExample class >> example [
 	^ self new open
 ]
 
-{ #category : 'specs' }
-SpToolbarToggleButtonExample class >> title [
-
-	^ 'Toolbar Toggle Button Example'
-]
-
 { #category : 'initialization' }
 SpToolbarToggleButtonExample >> connectPresenters [
 
@@ -87,4 +81,10 @@ SpToolbarToggleButtonExample >> updateLabel [
 								<< ' : ';
 								<< (button state ifTrue: [ 'V' ] ifFalse: [ 'X' ]) ]
 						separatedBy: [ s << ' - ' ] ])
+]
+
+{ #category : 'updating' }
+SpToolbarToggleButtonExample >> windowTitle [
+
+	^ 'Toolbar Toggle Button Example'
 ]

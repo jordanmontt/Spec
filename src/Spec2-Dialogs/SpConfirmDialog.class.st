@@ -28,6 +28,12 @@ SpConfirmDialog class >> defaultExtent [
 	^ 450@120
 ]
 
+{ #category : 'accessing' }
+SpConfirmDialog class >> defaultPreferredExtent [
+
+	^ 450@120
+]
+
 { #category : 'documentation' }
 SpConfirmDialog class >> documentFactoryMethodSelector [
 	

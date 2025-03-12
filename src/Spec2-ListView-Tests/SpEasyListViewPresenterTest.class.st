@@ -5,12 +5,6 @@ Class {
 	#package : 'Spec2-ListView-Tests'
 }
 
-{ #category : 'testing' }
-SpEasyListViewPresenterTest class >> shouldInheritSelectors [
-
-	^ true
-]
-
 { #category : 'accessing' }
 SpEasyListViewPresenterTest >> classToTest [
 	

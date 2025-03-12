@@ -16,6 +16,12 @@ Class {
 	#tag : 'StyleSheet'
 }
 
+{ #category : 'accessing' }
+SpStyleEnvironmentColorProxy >> asCollectionElement [
+	"Necessary since Fuel uses identity collections to store references."
+	^ self
+]
+
 { #category : 'converting' }
 SpStyleEnvironmentColorProxy >> asStyleVariable [
 
@@ -32,6 +38,12 @@ SpStyleEnvironmentColorProxy >> colorSelector: aSelector [
 SpStyleEnvironmentColorProxy >> doesNotUnderstand: aMessage [
 
 	^ aMessage sendTo: (Smalltalk ui theme perform: colorSelector)
+]
+
+{ #category : 'accessing' }
+SpStyleEnvironmentColorProxy >> enclosedElement [
+	"Necessary since Fuel uses identity collections to store references."
+	^ self
 ]
 
 { #category : 'hooks' }

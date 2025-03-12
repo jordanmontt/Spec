@@ -22,14 +22,14 @@ SpSwitchPresenter class >> documentFactoryMethodSelector [
 	^ #newSwitch
 ]
 
-{ #category : 'specs' }
-SpSwitchPresenter class >> title [
-
-	^ 'Switch Button'
-]
-
 { #category : 'api' }
 SpSwitchPresenter >> label: aString [
 
 	self error: 'Switches can''t have labels'
+]
+
+{ #category : 'api' }
+SpSwitchPresenter >> windowTitle [
+
+	^ 'Switch Button'
 ]

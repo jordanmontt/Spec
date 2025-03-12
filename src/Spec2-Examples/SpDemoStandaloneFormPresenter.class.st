@@ -26,6 +26,12 @@ Class {
 	#tag : 'Demo-Forms'
 }
 
+{ #category : 'accessing' }
+SpDemoStandaloneFormPresenter class >> defaultPreferredExtent [
+
+	^ 400@400
+]
+
 { #category : 'instance creation' }
 SpDemoStandaloneFormPresenter class >> open [
 	<example>
@@ -71,10 +77,7 @@ SpDemoStandaloneFormPresenter >> defaultLayout [
 				add: 'Scale:'; add: scaleInput; nextRow;
 				add: 'Password:'; add: passwordInput; nextRow;
 				add: 'Remember me:'; add: checkboxInput; nextRow;
-				"SpDatePresenter is exclusive from Morphic backend for the moment"
-				"add: 'Date:';
-				add: #dateInput;
-				nextRow;"
+				add: 'Date:'; add: dateInput; nextRow;
 				add: 'Gender:'; add: (SpBoxLayout newLeftToRight
 					add: maleButton;
 					add: femaleButton;
@@ -168,13 +171,6 @@ SpDemoStandaloneFormPresenter >> initializePresenters [
 
 	submitButton := self newButton label: 'Submit'.
 	restoreButton := self newButton label: 'Restore'
-]
-
-{ #category : 'initialization' }
-SpDemoStandaloneFormPresenter >> initializeWindow: aWindowPresenter [
-
-	aWindowPresenter
-		initialExtent: 400@400
 ]
 
 { #category : 'accessing' }

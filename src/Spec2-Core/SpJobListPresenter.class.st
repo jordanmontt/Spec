@@ -14,6 +14,12 @@ Class {
 	#tag : 'Job'
 }
 
+{ #category : 'initialization' }
+SpJobListPresenter class >> defaultPreferredExtent [ 
+	
+	^ 500@(self jobPresenterHeight)
+]
+
 { #category : 'examples' }
 SpJobListPresenter class >> example [ 
 	| jobList |
@@ -35,6 +41,12 @@ SpJobListPresenter class >> example [
 	] fork.
 
 	^ nil
+]
+
+{ #category : 'initialization' }
+SpJobListPresenter class >> jobPresenterHeight [
+
+	^ 80
 ]
 
 { #category : 'private' }
@@ -92,8 +104,8 @@ SpJobListPresenter >> initializePresenters [
 { #category : 'initialization' }
 SpJobListPresenter >> initializeWindow: aWindowPresenter [ 
 
+	super initializeWindow: aWindowPresenter.
 	aWindowPresenter 
-		initialExtent: 500@(self jobPresenterHeight);
 		withoutDecorations;
 		beNotResizable;
 		centered
@@ -123,7 +135,7 @@ SpJobListPresenter >> jobEnd: ann [
 { #category : 'initialization' }
 SpJobListPresenter >> jobPresenterHeight [
 
-	^ 80
+	^ self class jobPresenterHeight
 ]
 
 { #category : 'private - events' }

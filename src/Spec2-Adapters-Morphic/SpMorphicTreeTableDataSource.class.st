@@ -223,3 +223,14 @@ SpMorphicTreeTableDataSource >> toString: anItem [
 
 	^ super toString: anItem data
 ]
+
+{ #category : 'drag and drop' }
+SpMorphicTreeTableDataSource >> transferFor: passenger from: aMorph [
+
+	^ (self model adapter 
+		transferFor: passenger 
+		from: self table) 
+		build
+		  dragHand: aMorph currentHand;
+		  yourself
+]

@@ -73,7 +73,7 @@ SpPaginatorPageMorph >> mouseDown: event [
 SpPaginatorPageMorph >> newContentMorph [
 
 	^ Morph new
-		color: Color white;
+		color: self theme backgroundColor;
 		borderColor: self theme borderColor;
 		borderWidth: 1;
 		hResizing: #spaceFill;

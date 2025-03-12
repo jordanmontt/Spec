@@ -188,11 +188,6 @@ SpEditableListPresenter >> initializePresenters [
 		help: 'Move this item on the last position of the list'
 ]
 
-{ #category : 'initialization' }
-SpEditableListPresenter >> initializeWindow: aWindowPresenter [
-	aWindowPresenter title: self title
-]
-
 { #category : 'accessing' }
 SpEditableListPresenter >> items [
 	^ list model items
@@ -321,4 +316,14 @@ SpEditableListPresenter >> upButton [
 { #category : 'api' }
 SpEditableListPresenter >> whenSelectionChangedDo: aBlock [
 	list whenSelectionChangedDo: aBlock
+]
+
+{ #category : 'accessing' }
+SpEditableListPresenter >> windowTitle [
+	^ title
+]
+
+{ #category : 'accessing' }
+SpEditableListPresenter >> windowtitle [
+	^ title
 ]

@@ -72,14 +72,14 @@ SpNotificationCenterPresenter >> initializePresenters [
 ]
 
 { #category : 'initialization' }
-SpNotificationCenterPresenter >> initializeWindow: aWindowPresenter [
-
-	aWindowPresenter title: 'Notifications'
-]
-
-{ #category : 'initialization' }
 SpNotificationCenterPresenter >> modelChanged [
 	
 	itemList items: announcingObject value items.
 	itemList selectFirst
+]
+
+{ #category : 'initialization' }
+SpNotificationCenterPresenter >> windowTitle [
+
+	^  'Notifications'
 ]

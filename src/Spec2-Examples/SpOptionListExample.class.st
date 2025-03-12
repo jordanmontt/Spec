@@ -10,6 +10,12 @@ Class {
 	#tag : 'Standalone'
 }
 
+{ #category : 'initialization' }
+SpOptionListExample class >> defaultPreferredExtent [
+
+	^ 800@500
+]
+
 { #category : 'examples' }
 SpOptionListExample class >> example [
 
@@ -29,9 +35,7 @@ SpOptionListExample >> allOptions [
 ]
 
 { #category : 'initialization' }
-SpOptionListExample >> initializeWindow: aWindowPresenter [
+SpOptionListExample >> windowTitle [
 
-	aWindowPresenter
-		title: 'Spec Option List demos';
-		initialExtent: 800@500
+	^ 'Spec Option List demos'
 ]

@@ -20,6 +20,12 @@ Class {
 	#tag : 'Standalone'
 }
 
+{ #category : 'accessing' }
+SpInitializeWindowExample class >> defaultPreferredExtent [ 
+
+	^ 600@400
+]
+
 { #category : 'showing' }
 SpInitializeWindowExample class >> show [
 	<script>
@@ -49,7 +55,7 @@ SpInitializeWindowExample >> buildPopMessageToolBarItem [
 		
 	^ SpToolbarButtonPresenter new
 		label: 'Pop';
-		icon: (self iconNamed: #glamorousDown);
+		icon: (self iconNamed: #down);
 		help: 'Pop last status bar message';
 		action: [ self popMessage ];
 		yourself
@@ -57,10 +63,10 @@ SpInitializeWindowExample >> buildPopMessageToolBarItem [
 
 { #category : 'private - building' }
 SpInitializeWindowExample >> buildPushMessageToolBarItem [
-		
+
 	^ SpToolbarButtonPresenter new
 		label: 'Push';
-		icon: (self iconNamed: #glamorousUp);
+		icon: (self iconNamed: #up);
 		help: 'Push a new status bar message';
 		action: [ self pushMessage ];
 		yourself
@@ -88,12 +94,6 @@ SpInitializeWindowExample >> defaultLayout [
 	^ SpBoxLayout newTopToBottom
 		  add: text;
 		  yourself
-]
-
-{ #category : 'api' }
-SpInitializeWindowExample >> initialExtent [
- 
-	^ 600@400
 ]
 
 { #category : 'initialization' }
@@ -149,7 +149,7 @@ SpInitializeWindowExample >> text: aPresenter [
 ]
 
 { #category : 'api' }
-SpInitializeWindowExample >> title [ 
+SpInitializeWindowExample >> windowTitle [ 
 
 	^ 'Example of using #prepareWindow:'
 ]

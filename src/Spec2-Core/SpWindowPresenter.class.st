@@ -53,8 +53,14 @@ SpWindowPresenter class >> application: anApplication [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : 'accessing - deprecated' }
 SpWindowPresenter class >> defaultTitle [
+	"Deprecated"
+	^ self defaultWindowTitle
+]
+
+{ #category : 'accessing' }
+SpWindowPresenter class >> defaultWindowTitle [
 
 	^ 'Untitled window'
 ]
@@ -547,9 +553,14 @@ SpWindowPresenter >> resizable: aBoolean [
 
 { #category : 'api' }
 SpWindowPresenter >> resize: anExtent [
-
+	"Resize the receiver if it isResizable."
+	
+	"Note that we use the preferredExtent: because this is the API to get the resized extent being remembered."
+	
 	self withAdapterPerformOrDefer: [ :anAdapter | 
-		anAdapter resize: anExtent ]
+		resizable ifTrue: [
+			presenter preferredExtent: anExtent.   
+			anAdapter resize: anExtent ] ]
 ]
 
 { #category : 'api' }
@@ -586,11 +597,6 @@ SpWindowPresenter >> taskbarIcon [
 			self iconNamed:  (self presenter
 				ifNotNil: [ :aPresenter | aPresenter taskbarIconName ]
 				ifNil: [ self taskbarIconName ]) ]
-]
-
-{ #category : 'private' }
-SpWindowPresenter >> title [
-	^ titleHolder
 ]
 
 { #category : 'private' }
@@ -753,11 +759,6 @@ SpWindowPresenter >> windowClosed [
 	
 	isClosed := true.
 	self application windowClosed: self
-]
-
-{ #category : 'private' }
-SpWindowPresenter >> windowIcon [
-	^ windowIcon
 ]
 
 { #category : 'private' }

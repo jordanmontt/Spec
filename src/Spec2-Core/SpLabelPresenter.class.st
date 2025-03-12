@@ -29,7 +29,7 @@ SpLabelPresenter class >> documentFactoryMethodSelector [
 ]
 
 { #category : 'specs' }
-SpLabelPresenter class >> title [
+SpLabelPresenter class >> windowTitle [
 
 	^ 'Label presenter'
 ]

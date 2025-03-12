@@ -23,12 +23,6 @@ SpToggleButtonExample class >> example [
 	^ self new open
 ]
 
-{ #category : 'specs' }
-SpToggleButtonExample class >> title [
-
-	^ 'Toggle Button Example'
-]
-
 { #category : 'initialization' }
 SpToggleButtonExample >> connectPresenters [
 
@@ -80,4 +74,10 @@ SpToggleButtonExample >> updateLabel [
 								<< ' : ';
 								<< (button state ifTrue: [ 'V' ] ifFalse: [ 'X' ]) ]
 						separatedBy: [ s << ' - ' ] ])
+]
+
+{ #category : 'updating' }
+SpToggleButtonExample >> windowTitle [ 
+
+	^ 'ToggleButton Example'
 ]

@@ -58,6 +58,12 @@ SpCommandGroupExample class >> buildToolBarGroupWith: presenter [
 		yourself
 ]
 
+{ #category : 'accessing' }
+SpCommandGroupExample class >> defaultPreferredExtent [
+
+	^ 600@300
+]
+
 { #category : 'examples' }
 SpCommandGroupExample class >> example [
 	"This example opens a presenter with a menubar and a toolbar created from commands."
@@ -111,8 +117,11 @@ SpCommandGroupExample >> initializeWindow: aWindowPresenter [
 
 	super initializeWindow: aWindowPresenter.
 	aWindowPresenter
-		title: 'Example with context menu, menubar and toolbar based on commands';
-		initialExtent: 600@300;
 		menu: menuBar;
 		toolbar: toolBar
+]
+
+{ #category : 'initialization' }
+SpCommandGroupExample >> windowTitle [ 
+	^ 'Example with context menu, menubar and toolbar based on commands'
 ]

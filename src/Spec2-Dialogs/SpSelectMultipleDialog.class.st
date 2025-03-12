@@ -136,18 +136,6 @@ SpSelectMultipleDialog >> displayIcon: aBlock [
 	self refreshTable
 ]
 
-{ #category : 'api' }
-SpSelectMultipleDialog >> extent [
-
-	^ initialExtent ifNil: [ self class defaultExtent ]
-]
-
-{ #category : 'api' }
-SpSelectMultipleDialog >> extent: aPoint [
-
-	initialExtent := aPoint
-]
-
 { #category : 'initialization' }
 SpSelectMultipleDialog >> initialize [
 

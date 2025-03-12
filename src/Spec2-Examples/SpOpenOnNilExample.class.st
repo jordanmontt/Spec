@@ -53,6 +53,6 @@ SpOpenOnNilExample >> text [
 ]
 
 { #category : 'accessing' }
-SpOpenOnNilExample >> title [
+SpOpenOnNilExample >> windowTitle [
 	^ 'OpenOnNilExample'
 ]

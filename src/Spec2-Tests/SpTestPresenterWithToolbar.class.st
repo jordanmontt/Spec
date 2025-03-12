@@ -22,6 +22,12 @@ SpTestPresenterWithToolbar class >> defaultLayout [
 		yourself
 ]
 
+{ #category : 'layout' }
+SpTestPresenterWithToolbar class >> defaultPreferredExtent [ 
+
+	^ 700 @ 550
+]
+
 { #category : 'initialization' }
 SpTestPresenterWithToolbar >> initializePresenters [
 	button := self newButton
@@ -32,13 +38,18 @@ SpTestPresenterWithToolbar >> initializePresenters [
 { #category : 'initialization' }
 SpTestPresenterWithToolbar >> initializeWindow: aWindowPresenter [
 	| toolbar |
+	super initializeWindow: aWindowPresenter.
 	toolbar := SpToolbarPresenter new
 		addItemLeft: (SpToolbarButtonPresenter new
 			label: 'toolbar button';
 			yourself);
 		yourself.
 	aWindowPresenter
-		title: self class name;
-		initialExtent: 700 @ 500;
 		toolbar: toolbar
+]
+
+{ #category : 'initialization' }
+SpTestPresenterWithToolbar >> windowTitle [
+
+	^  self class name
 ]

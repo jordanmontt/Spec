@@ -20,6 +20,12 @@ Class {
 }
 
 { #category : 'showing' }
+SpTransmissionComponentListExample class >> defaultPreferredExtent [ 
+
+	^  800 @ 600
+]
+
+{ #category : 'showing' }
 SpTransmissionComponentListExample class >> open [ 
 	<script>
 	
@@ -102,9 +108,7 @@ SpTransmissionComponentListExample >> initializePresenters [
 ]
 
 { #category : 'initialization' }
-SpTransmissionComponentListExample >> initializeWindow: aWindowPresenter [
+SpTransmissionComponentListExample >> windowTitle [ 
 
-	aWindowPresenter
-		title: 'Transmission example with component list example';
-		initialExtent: 800 @ 600
+	^ 'Transmission example with component list example'
 ]

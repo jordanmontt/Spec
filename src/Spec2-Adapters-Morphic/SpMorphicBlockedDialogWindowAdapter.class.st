@@ -32,8 +32,7 @@ SpMorphicBlockedDialogWindowAdapter >> openWithDeferredAction: aBlock [
 	 and we want to (maybe) center it before showing it."
 
 	self widget openInWorld.
-	self presenter isCentered 
-		ifTrue: [ self centered ].
+	self centerIfNeeded.
 	self presenter windowIsOpened.
 	aBlock value.
 	MorphicRenderLoop new doOneCycleWhile: [ self widget isInWorld ]

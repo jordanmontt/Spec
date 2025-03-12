@@ -28,12 +28,12 @@ SpAbstractButtonPresenterTest >> testWhenHelpChanged [
 { #category : 'tests' }
 SpAbstractButtonPresenterTest >> testWhenIconChangedDo [
 
-	presenter iconName: #glamorousCancel.
+	presenter iconName: #cancel.
 
 	presenter whenLabelChangedDo: [ :new :old | 
-		self assert: new equals: (self iconNamed: #glamorousCancel)].
+		self assert: new equals: (self iconNamed: #cancel)].
 
-	self assert: presenter icon equals: (self iconNamed: #glamorousCancel).
+	self assert: presenter icon equals: (self iconNamed: #cancel).
 
 	self openInstance.
 

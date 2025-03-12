@@ -79,12 +79,6 @@ SpTextPresenter class >> textSearchCommandsGroupWith: aPresenter [
 	^ group
 ]
 
-{ #category : 'specs' }
-SpTextPresenter class >> title [
-
-	^ 'Text'
-]
-
 { #category : 'testing' }
 SpTextPresenter >> backendIncludesEditionMenu [
 	"Some backends can contain bundled by default edition context menu (copy, cut, paste), 
@@ -285,6 +279,12 @@ SpTextPresenter >> whenWrapWordChangedDo: aBlock [
 	 - the announcement triggering this action"
 
 	self property: #wrapWord whenChangedDo: aBlock
+]
+
+{ #category : 'private' }
+SpTextPresenter >> windowTitle [
+
+	^ 'Text'
 ]
 
 { #category : 'api' }
