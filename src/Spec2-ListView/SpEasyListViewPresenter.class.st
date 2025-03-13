@@ -28,7 +28,7 @@ SpEasyListViewPresenter class >> example [
 		yourself
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 SpEasyListViewPresenter class >> exampleDragAndDrop [
 	| list1 list2 |
 
