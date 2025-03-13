@@ -5,7 +5,7 @@ SpMillerColumnPresenter class >> example [
 
 	^ SpMillerColumnPresenter new
 		  presenterBlock: [ :model | 
-			  SpListPresenter new
+			  SpEasyListViewPresenter new
 				  items: (1 to: model);
 				  yourself ];
 		  setRootModel: 10;

@@ -7,10 +7,46 @@ Class {
 	#tag : 'Easy'
 }
 
+{ #category : 'api - drag and drop' }
+SpAbstractEasyListViewPresenter >> acceptDrop [
+
+	^ contentView acceptDrop
+]
+
+{ #category : 'api - drag and drop' }
+SpAbstractEasyListViewPresenter >> acceptDrop: aBoolean [
+
+	contentView acceptDrop: aBoolean
+]
+
 { #category : 'api' }
 SpAbstractEasyListViewPresenter >> addScrollBarStyle: aStyle [
 
 	contentView addScrollBarStyle: aStyle
+]
+
+{ #category : 'testing' }
+SpAbstractEasyListViewPresenter >> dragEnabled [
+
+	^ contentView dragEnabled
+]
+
+{ #category : 'api - drag and drop' }
+SpAbstractEasyListViewPresenter >> dragEnabled: aBoolean [ 
+
+	contentView dragEnabled: aBoolean
+]
+
+{ #category : 'testing' }
+SpAbstractEasyListViewPresenter >> dropEnabled [
+
+	^ contentView dropEnabled
+]
+
+{ #category : 'api - drag and drop' }
+SpAbstractEasyListViewPresenter >> dropEnabled: aBoolean [
+
+	contentView dropEnabled: aBoolean
 ]
 
 { #category : 'private' }
@@ -65,7 +101,7 @@ SpAbstractEasyListViewPresenter >> scrollBarStyles [
 	^ contentView scrollBarStyles
 ]
 
-{ #category : 'selection' }
+{ #category : 'api - selection' }
 SpAbstractEasyListViewPresenter >> selectFirst [
 	
 	contentView selectFirst
@@ -138,6 +174,24 @@ SpAbstractEasyListViewPresenter >> showColumnHeaders [
 SpAbstractEasyListViewPresenter >> sortingBlock: aBlock [ 
 
 	self model sortingBlock: aBlock
+]
+
+{ #category : 'api - drag and drop' }
+SpAbstractEasyListViewPresenter >> wantsDrop [
+
+	^ contentView wantsDrop
+]
+
+{ #category : 'api - drag and drop' }
+SpAbstractEasyListViewPresenter >> wantsDrop: aBlock [ 
+	
+	contentView wantsDrop: aBlock
+]
+
+{ #category : 'api - events' }
+SpAbstractEasyListViewPresenter >> whenDragStartDo: aBlock [ 
+	
+	contentView whenDragStartDo: aBlock
 ]
 
 { #category : 'api - events' }

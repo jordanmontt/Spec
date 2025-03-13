@@ -52,6 +52,12 @@ SpActionGroup >> addActionWith: aBlock [
 	self add: action
 ]
 
+{ #category : 'adding' }
+SpActionGroup >> addAll: aCollection [ 
+
+	aCollection do: [ :each | self add: each ]
+]
+
 { #category : 'accessing' }
 SpActionGroup >> addGroupWith: aBlock [
 	| action |

@@ -26,9 +26,9 @@ SpTActionContainer >> actions: anActionGroup [
 	 Shortcut actions, however, can be installed and they will be available in children 
 	 presenters when they are focused."
 
-	userActionGroup := anActionGroup 
-		name: #userActionGroup;
-		beRoot
+	userActionGroup := anActionGroup beRoot.
+	anActionGroup name isEmptyOrNil 
+		ifTrue: [ anActionGroup name: #userActionGroup ]
 ]
 
 { #category : 'api - actions' }
@@ -133,7 +133,7 @@ SpTActionContainer >> internalActions: anActionGroup [
 	internalActionGroup := anActionGroup beRoot
 ]
 
-{ #category : 'enumerating' }
+{ #category : 'api - events' }
 SpTActionContainer >> whenActionsChangedDo: aBlock [
 	"Inform when menu definition changed. 
 	 `aBlock` receives zero arguments."

@@ -65,12 +65,6 @@ SpWindowPresenter class >> defaultWindowTitle [
 	^ 'Untitled window'
 ]
 
-{ #category : 'testing' }
-SpWindowPresenter class >> isWindow [
-
-	^ true
-]
-
 { #category : 'instance creation' }
 SpWindowPresenter class >> presenter: aPresenter [
 	^ (self application: aPresenter application)
@@ -95,6 +89,12 @@ SpWindowPresenter >> aboutTitle [
 	(self presenter respondsTo: #aboutTitle) ifTrue: [ ^ self presenter aboutTitle ].
 	
 	^ self presenter toolName
+]
+
+{ #category : 'visiting' }
+SpWindowPresenter >> acceptVisitor: aVisitor [
+
+	aVisitor visitWindowPresenter: self
 ]
 
 { #category : 'api' }
@@ -315,7 +315,6 @@ SpWindowPresenter >> initialize [
 	askOkToClose := true.
 	decorations := true.
 
-	"presenter whenChangedDo: [ :m | self updateTitle ]."
 	self 
 		property: #titleHolder 
 		whenChangedDo: [ :aString | 
@@ -403,6 +402,12 @@ SpWindowPresenter >> isTopWindow [
 ]
 
 { #category : 'testing' }
+SpWindowPresenter >> isWindow [
+
+	^ true
+]
+
+{ #category : 'testing' }
 SpWindowPresenter >> isWindowPresenter [
 	"Answer if current presenter instance is a window presenter"
 	
@@ -456,6 +461,12 @@ SpWindowPresenter >> moveTo: aPoint [
 
 { #category : 'private' }
 SpWindowPresenter >> nearWindow [
+
+	^ self
+]
+
+{ #category : 'private' }
+SpWindowPresenter >> nearWindowLike [
 
 	^ self
 ]

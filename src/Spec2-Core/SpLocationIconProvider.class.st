@@ -66,10 +66,10 @@ SpLocationIconProvider >> initializeBlankIcon [
 ]
 
 { #category : 'inspecting' }
-SpLocationIconProvider >> inspectionIcons [
+SpLocationIconProvider >> inspectionIcons: aBuilder [
 	<inspectorPresentationOrder: 0 title: 'Icons'> 
 
-	^ SpListPresenter new
+	^ aBuilder newList
 		items: (icons associations sorted: [ :a :b | a key < b key ]);
 		displayIcon: [ :each | each value ];
 		display: [ :each | each key ];

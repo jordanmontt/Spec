@@ -21,7 +21,7 @@ Class {
 { #category : 'examples' }
 SpImageTableColumn class >> example [
 
-	SpTablePresenter new
+	SpEasyColumnViewPresenter new
 		addColumn:
 			((SpImageTableColumn 
 				title: 'Icon' 

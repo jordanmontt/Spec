@@ -116,7 +116,8 @@ SpSelectDialog >> initializePresenters [
 	super initializePresenters.
 
 	list := self newList.
-	
+	list searchMatching: [ :item :aString | 
+		(list display value: item) asLowercase beginsWith: aString asLowercase ].
 	list addStyle: 'spSelectList'.
 	list whenActivatedDo: [ self accept ]
 ]

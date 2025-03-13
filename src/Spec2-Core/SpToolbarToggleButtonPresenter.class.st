@@ -96,7 +96,7 @@ SpToolbarToggleButtonPresenter >> isSelected [
 { #category : 'private' }
 SpToolbarToggleButtonPresenter >> performAction [
 	
-	self action value: self state
+	self action cull: self state
 ]
 
 { #category : 'private' }

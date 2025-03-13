@@ -52,26 +52,27 @@ SpToggleSplitPresenter class >> example [
 
 { #category : 'examples' }
 SpToggleSplitPresenter class >> exampleOpenHidden [
-
-	| list text |
+	| presenter list text |
 	
-	text := SpTextPresenter new text: String loremIpsum.
-	list := SpListPresenter new items: (1 to: 10); yourself.
-	^ self new
+	presenter := self new.
+	
+	text := presenter newText text: String loremIpsum.
+	list := presenter newList items: (1 to: 10); yourself.
+	^ presenter 
 		first: text label: 'Show list';
 		second: list label: 'Hide list';
 		setHiddenInitialState;
-		open.
+		open
 ]
 
 { #category : 'examples' }
 SpToggleSplitPresenter class >> exampleOpenSplitted [
-
-	| list text |
+	| presenter list text |
 	
-	text := SpTextPresenter new text: String loremIpsum.
-	list := SpListPresenter new items: (1 to: 10); yourself.
-	^ self new
+	presenter := self new.
+	text := presenter newText text: String loremIpsum.
+	list := presenter newList items: (1 to: 10); yourself.
+	^ presenter
 		first: text label: 'Show list';
 		second: list label: 'Hide list';
 		setSplittedInitialState;
@@ -80,28 +81,31 @@ SpToggleSplitPresenter class >> exampleOpenSplitted [
 
 { #category : 'examples' }
 SpToggleSplitPresenter class >> exampleOpenVerticalCustomProportionSplit [
-
-	| list text |
+	| presenter list text |
 	
-	text := SpTextPresenter new text: String loremIpsum.
-	list := SpListPresenter new items: (1 to: 10); yourself.
-	^ self new
+	presenter := self new.
+	
+	text := presenter newText text: String loremIpsum.
+	list := presenter newList items: (1 to: 10); yourself.
+	^ presenter
 		layoutDirection: #newLeftToRight;
 		positionOfSlider: 30 percent;
 		first: text label: 'Show list';
 		second: list label: 'Hide list';
 		setSplittedInitialState;
-		open.
+		open
 ]
 
 { #category : 'examples' }
 SpToggleSplitPresenter class >> exampleOpenVerticalSplit [
-
-	| list text |
+	| presenter list text |
 	
-	text := SpTextPresenter new text: String loremIpsum.
-	list := SpListPresenter new items: (1 to: 10); yourself.
-	^ self new
+	presenter := self new.
+	
+	text := presenter newText text: String loremIpsum.
+	list := presenter newList items: (1 to: 10); yourself.
+	
+	^ presenter
 		layoutDirection: #newLeftToRight;
 		first: text label: 'Show list';
 		second: list label: 'Hide list';

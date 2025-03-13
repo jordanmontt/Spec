@@ -63,6 +63,30 @@ SpTabLayout >> initialize [
 { #category : 'accessing' }
 SpTabLayout >> select: aWindowPresenter [
 
+	self selectIndex: (self children indexOf: aWindowPresenter)
+]
+
+{ #category : 'accessing' }
+SpTabLayout >> selectIndex: aNumber [
+
 	self withAdapterDo: [ :anAdapter | 
-		anAdapter selectIndex: (self children indexOf: aWindowPresenter) ]
+		anAdapter selectIndex: aNumber ]
+]
+
+{ #category : 'events' }
+SpTabLayout >> whenTabSelectedDo: aBlock [
+
+	self announcer 
+		when: SpTabSelected 
+		do: aBlock
+		for: aBlock receiver
+]
+
+{ #category : 'events' }
+SpTabLayout >> whenTabUnselectedDo: aBlock [
+
+	self announcer 
+		when: SpTabUnselected 
+		do: aBlock
+		for: aBlock receiver
 ]

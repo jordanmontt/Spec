@@ -26,10 +26,26 @@ SpMorphicPopoverAdapter >> addModelTo: aMorph [
 
 	aMorph contentMorph: self presenterWidget.	
 	aMorph beRelativeTo: self presenter relativeTo adapter widget. 	
+	aMorph announcer 
+		when: MorphDeleted
+		send: #announceClosed
+		to: self. 
 	self setPopoverPositionTo: aMorph.
 	
 	self presenter whenPresenterChangedDo: [
 		aMorph contentMorph: self presenterWidget ]
+]
+
+{ #category : 'private - announcing' }
+SpMorphicPopoverAdapter >> announceClosed [
+	
+	self presenter popoverClosed
+]
+
+{ #category : 'private - announcing' }
+SpMorphicPopoverAdapter >> announceOpened [
+
+	self presenter popoverOpened
 ]
 
 { #category : 'factory' }
@@ -59,7 +75,15 @@ SpMorphicPopoverAdapter >> popup [
 
 	self widgetDo: [ :w | 
 		self applyStyle: w.
-		w popup ]
+		w popup.
+		self announceOpened ]
+]
+
+{ #category : 'api' }
+SpMorphicPopoverAdapter >> popupModal [
+
+	self flag: #TODO. "This may not have sense on morphic" 
+	^ self popup
 ]
 
 { #category : 'api' }
@@ -67,7 +91,8 @@ SpMorphicPopoverAdapter >> popupPointingTo: aRectangle [
 
 	self widgetDo: [ :w |
 		self applyStyle: w.
-		w popupPointingTo: aRectangle ]
+		w popupPointingTo: aRectangle.
+		self presenter popoverOpened ]
 ]
 
 { #category : 'factory' }

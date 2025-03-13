@@ -36,6 +36,12 @@ SpCommand >> asButtonPresenter [
 ]
 
 { #category : 'converting' }
+SpCommand >> asSpecCommand [
+	
+	^ self
+]
+
+{ #category : 'converting' }
 SpCommand >> asToggleButtonPresenter [
 	
 	self configureAsButtonOfClass: SpToggleButtonPresenter. 
@@ -76,17 +82,17 @@ SpCommand >> configureAsButton [
 
 { #category : 'presenter building' }
 SpCommand >> configureAsButtonOfClass: aButtonClass [
-	self
-		buildPresenterBlock: [ :specCommand | 
-			aButtonClass new
-				label: specCommand name;
-				help: specCommand description;
-				in: [ :button | 
-					specCommand hasIcon
-						ifTrue: [ button icon: specCommand icon ] ];
-				action: [ specCommand execute ];
-				enabled: specCommand canBeExecuted;
-				yourself ]
+	
+	self buildPresenterBlock: [ :specCommand | 
+		aButtonClass new
+			label: specCommand name;
+			help: specCommand description;
+			in: [ :button | 
+				specCommand hasIcon
+					ifTrue: [ button icon: specCommand icon ] ];
+			action: [ specCommand execute ];
+			enabled: specCommand canBeExecuted;
+			yourself ]
 ]
 
 { #category : 'presenter building' }

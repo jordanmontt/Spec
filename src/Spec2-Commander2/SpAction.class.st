@@ -138,8 +138,7 @@ SpAction >> initialize [
 	decoratedCommand := CmCommand new.
 	decoratedCommand name: nil.
 	visible := true.
-	super initialize.
-	 
+	super initialize
 ]
 
 { #category : 'testing' }

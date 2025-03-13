@@ -9,6 +9,7 @@ Class {
 	#name : 'SpPopoverPresenter',
 	#superclass : 'SpAbstractWidgetPresenter',
 	#instVars : [
+		'#isClosed => ObservableSlot',
 		'#presenter => ObservableSlot',
 		'#position',
 		'#relativeTo'
@@ -28,6 +29,12 @@ SpPopoverPresenter class >> adapterName [
 SpPopoverPresenter class >> documentFactoryMethodSelector [
 
 	^ #newPopover
+]
+
+{ #category : 'visiting' }
+SpPopoverPresenter >> acceptVisitor: aVisitor [
+
+	aVisitor visitPopoverPresenter: self
 ]
 
 { #category : 'api' }
@@ -83,7 +90,33 @@ SpPopoverPresenter >> dismiss [
 SpPopoverPresenter >> initialize [
 
 	super initialize.
+	isClosed := true.
 	self bePositionBottom
+]
+
+{ #category : 'testing' }
+SpPopoverPresenter >> isPopover [
+
+	^ true
+]
+
+{ #category : 'private' }
+SpPopoverPresenter >> nearWindowLike [
+
+	^ self
+]
+
+{ #category : 'private' }
+SpPopoverPresenter >> popoverClosed [
+
+	isClosed := true
+	
+]
+
+{ #category : 'private' }
+SpPopoverPresenter >> popoverOpened [
+
+	isClosed := false
 ]
 
 { #category : 'api' }
@@ -93,6 +126,38 @@ SpPopoverPresenter >> popup [
 
 	self adapter ifNil: [ self build ].
 	self withAdapterDo: [ :anAdapter | anAdapter popup ]
+]
+
+{ #category : 'api' }
+SpPopoverPresenter >> popupModal [
+	"Shows the popover modaly, relative to `SpPopoverPresenter>>#relativeTo`"
+
+	self adapter ifNil: [ self build ].
+	self withAdapterDo: [ :anAdapter | anAdapter popupModal ]
+]
+
+{ #category : 'api' }
+SpPopoverPresenter >> popupModalAndWait [
+	"Shows the popover modaly, relative to `SpPopoverPresenter>>#relativeTo`. 
+	 And wait for an answer"
+	| sem |
+	
+	sem := Semaphore new.
+	self whenClosedDo: [ sem signal ].
+	self popupModal.
+	sem wait
+
+	
+]
+
+{ #category : 'api' }
+SpPopoverPresenter >> popupModalPointingTo: aRectangle [
+	"Shows the popover, relative to `SpPopoverPresenter>>#relativeTo`, and 
+	 pointing to `aRectangle`"
+
+	self adapter ifNil: [ self build ].
+	self withAdapterDo: [ :anAdapter |
+		anAdapter popupModalPointingTo: aRectangle ]
 ]
 
 { #category : 'api' }
@@ -131,7 +196,8 @@ SpPopoverPresenter >> presenter: aPresenter [
 	"Set the presenter that will be shown by the popover."
 
 	aPresenter owner: self.
-	presenter := aPresenter
+	presenter := aPresenter.
+	presenter initializePopover: self
 ]
 
 { #category : 'api' }
@@ -155,6 +221,26 @@ SpPopoverPresenter >> traversePresentersDo: aBlock excluding: excludes [
 	self presenter 
 		traversePresentersDo: aBlock 
 		excluding: excludes
+]
+
+{ #category : 'api - events' }
+SpPopoverPresenter >> whenClosedDo: aBlock [
+	"Inform when window is closed.
+	 `aBlock` receives zero arguments."
+	
+	self 
+		property: #isClosed 
+		whenChangedDo: [ :value | value ifTrue: aBlock ]
+]
+
+{ #category : 'api - events' }
+SpPopoverPresenter >> whenOpenedDo: aBlock [
+	"Inform when window is opened. 
+	 `aBlock` receives zero arguments."
+
+	self 
+		property: #isClosed 
+		whenChangedDo: [ :value | value ifFalse: aBlock ]
 ]
 
 { #category : 'api - events' }

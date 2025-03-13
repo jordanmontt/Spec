@@ -125,6 +125,17 @@ SpAbstractPresenter >> adapter: anAdapter [
 	adapter := anAdapter
 ]
 
+{ #category : 'private' }
+SpAbstractPresenter >> allWindowLike [
+
+	^ Array streamContents: [ :stream | 
+		| next |
+		next := self nearWindowLike. 
+		[ next ] whileNotNil: [ 
+			stream nextPut: next.
+			next := next owner ifNotNil: [ :anOwner | anOwner nearWindowLike ] ] ]
+]
+
 { #category : 'accessing' }
 SpAbstractPresenter >> application [
 	"Answer application owner of this composition.
@@ -358,6 +369,12 @@ SpAbstractPresenter >> layout [
 SpAbstractPresenter >> nearWindow [
 
 	^ self owner ifNotNil: [ :anOwner | anOwner nearWindow ]
+]
+
+{ #category : 'private' }
+SpAbstractPresenter >> nearWindowLike [
+
+	^ self owner ifNotNil: [ :anOwner | anOwner nearWindowLike ]
 ]
 
 { #category : 'accessing' }

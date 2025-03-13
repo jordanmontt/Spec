@@ -226,6 +226,12 @@ SpPresenter >> aboutText [
 	^ aboutText
 ]
 
+{ #category : 'visiting' }
+SpPresenter >> acceptVisitor: aVisitor [
+
+	aVisitor visitPresenter: self
+]
+
 { #category : 'private' }
 SpPresenter >> addAll: aWindow withSpecLayout: aSpec [
 
@@ -302,6 +308,7 @@ SpPresenter >> allPresentersInFocusOrder [
 { #category : 'accessing' }
 SpPresenter >> announce: anAnnouncement [
 
+	announcer ifNil: [ ^ self ].
 	self announcer announce: anAnnouncement
 ]
 
@@ -349,6 +356,14 @@ SpPresenter >> applyKeyBindingsFromMenu: aMenuPresenter [
 					shortcutKey: shortcut;
 					action: [ item performMenuActionWith: #() ] ] ].
 			item subMenu ifNotNil: [ :subMenu | subMenu addKeyBindingsTo: self	] ] ]
+]
+
+{ #category : 'converting' }
+SpPresenter >> asPopover [
+
+	^ self owner newPopover
+		presenter: self;
+		yourself
 ]
 
 { #category : 'converting' }
@@ -542,7 +557,7 @@ SpPresenter >> hasKeyboardFocus [
 SpPresenter >> hide [
 	"hide current presenter making it invisible for the user"
 
-	visible := false
+	self visible: false
 ]
 
 { #category : 'accessing' }
@@ -591,6 +606,12 @@ SpPresenter >> initialize [
 	self initializePrivateValueHolders.
 	self initializePrivateHooks.
 	self initializePrivateAnnouncements
+]
+
+{ #category : 'initialization' }
+SpPresenter >> initializePopover: aPopoverPresenter [
+	"This presenter will be shown in a popover, which may need to be 
+	 configured accordingly. Override this method to add that configuration"
 ]
 
 { #category : 'initialization - deprecated' }
@@ -672,19 +693,17 @@ SpPresenter >> initializeWindow: aWindowPresenter [
 		title: self windowTitle;
 		initialExtent: self class preferredExtent;
 		windowIcon: self windowIcon;
-		"Pay attention preferredExtent: is used here because it is stateful
+		"Notice that preferredExtent: is used here because it is stateful
 		in the sense that it will set the preferred extent to be remembered.
 		Of course only when resizable allows it."
-
-		whenResizingDo: [ :ann | aWindowPresenter isResizable 
-									ifTrue: [ self preferredExtent: ann newSize ]].
+		whenResizingDo: [ :ann | self windowResizedTo: ann newSize ].
 ]
 
 { #category : 'inspector - extensions' }
-SpPresenter >> inspectionSubPresenters [
+SpPresenter >> inspectionSubPresenters: aBuilder [
 	<inspectorPresentationOrder: 910 title: 'Subpresenters'>
 	
-	^ SpTreePresenter new
+	^ aBuilder newTree
 		roots: self presenters;
 		children: [ :each | each presenters ];
 		expandRoots;
@@ -729,6 +748,11 @@ SpPresenter >> isDisplayed [
 ]
 
 { #category : 'testing' }
+SpPresenter >> isPopover [
+	^ false
+]
+
+{ #category : 'testing' }
 SpPresenter >> isRoot [
 	"Answer if this presenter is the root of the presenter hierarchy.
 	 To be root, the presenter has to be contained in a window"
@@ -745,6 +769,12 @@ SpPresenter >> isVisible [
 	 See `SpPresenter>>#show` and `SpPresenter>>#hide`."
 	
 	^ visible value
+]
+
+{ #category : 'testing' }
+SpPresenter >> isWindow [
+
+	^ false
 ]
 
 { #category : 'accessing' }
@@ -948,7 +978,7 @@ SpPresenter >> setModelBeforeInitialization: aDomainObject [
 SpPresenter >> show [
 	"show current presenter making it visible for the user"
 
-	visible := true
+	self visible: true
 ]
 
 { #category : 'private' }
@@ -1046,6 +1076,13 @@ SpPresenter >> update [
 SpPresenter >> updatePresenter [
 ]
 
+{ #category : 'api' }
+SpPresenter >> visible: aBoolean [
+	"set the visibility status of the presenter (it can be hidden or shown)"
+
+	visible := aBoolean
+]
+
 { #category : 'TOREMOVE' }
 SpPresenter >> visibleIf: aValuable [
 
@@ -1109,6 +1146,13 @@ SpPresenter >> windowIcon [
 	^ windowIcon
 ]
 
+{ #category : 'private' }
+SpPresenter >> windowResizedTo: aSize [
+
+	self window isResizable ifFalse: [ ^ self ].
+	self preferredExtent: aSize
+]
+
 { #category : 'accessing' }
 SpPresenter >> windowTitle [
 	"You can specialize this method to provide a nice window title.
@@ -1121,4 +1165,13 @@ SpPresenter >> windowTitle [
 	"
 
 	^ titleHolder ifNil: [ titleHolder := 'Unnamed Window' ]
+]
+
+{ #category : 'private' }
+SpPresenter >> withPopoverDo: aBlock [
+	"Execute a block in the first popover in the DOM"
+	
+	self isPopover ifTrue: [ ^ aBlock cull: self ].
+	self owner ifNotNil: [ 
+		self owner withPopoverDo: aBlock ]
 ]
