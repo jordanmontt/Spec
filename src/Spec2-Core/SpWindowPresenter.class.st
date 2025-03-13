@@ -308,7 +308,7 @@ SpWindowPresenter >> initialize [
 
 	super initialize.
 
-	titleHolder := self class defaultTitle.
+	titleHolder := self class defaultWindowTitle.
 	isClosed := true.
 	resizable := true.
 	centered := false.

@@ -693,12 +693,10 @@ SpPresenter >> initializeWindow: aWindowPresenter [
 		title: self windowTitle;
 		initialExtent: self class preferredExtent;
 		windowIcon: self windowIcon;
-		"Pay attention preferredExtent: is used here because it is stateful
+		"Notice that preferredExtent: is used here because it is stateful
 		in the sense that it will set the preferred extent to be remembered.
 		Of course only when resizable allows it."
-
-		whenResizingDo: [ :ann | aWindowPresenter isResizable 
-									ifTrue: [ self preferredExtent: ann newSize ]].
+		whenResizingDo: [ :ann | self windowResizedTo: ann newSize ].
 ]
 
 { #category : 'inspector - extensions' }
@@ -1146,6 +1144,13 @@ SpPresenter >> windowIcon [
 	"
 
 	^ windowIcon
+]
+
+{ #category : 'private' }
+SpPresenter >> windowResizedTo: aSize [
+
+	self window isResizable ifFalse: [ ^ self ].
+	self preferredExtent: aSize
 ]
 
 { #category : 'accessing' }
