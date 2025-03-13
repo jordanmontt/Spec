@@ -44,16 +44,18 @@ SpCodeSelectionCommand >> asSpecCommand [
 { #category : 'private' }
 SpCodeSelectionCommand >> compile: aStream for: anObject in: evalContext [
 
-	| methodClass |
-	methodClass := evalContext
-		               ifNil: [ anObject class ]
-		               ifNotNil: [ evalContext methodClass ].
+	| compiler |
+	compiler := context class compiler
+		            source: aStream;
+		            yourself.
 
-	^ context class compiler
-		  source: aStream;
-		  class: methodClass;
-		  context: evalContext;
-		  requestor: context; "it should enable a visibility of current tool variables in new debugger"
+	evalContext
+		ifNil: [ compiler receiver: anObject ]
+		ifNotNil: [ compiler context: evalContext ].
+
+	^ compiler
+		  requestor: context;
+		  "it should enable a visibility of current tool variables in new debugger"
 		  isScripting: true;
 		  failBlock: [ ^ nil ];
 		  compile
