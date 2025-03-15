@@ -207,6 +207,12 @@ SpPresenter class >> preferredExtent: aPoint [
 	customExtent := aPoint
 ]
 
+{ #category : 'accessing' }
+SpPresenter class >> resetRememberedResizeExtent [
+	
+	customExtent := nil 
+]
+
 { #category : 'specs' }
 SpPresenter class >> title [
 	
