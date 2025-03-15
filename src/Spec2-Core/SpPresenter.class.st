@@ -514,12 +514,14 @@ SpPresenter >> enabled: aBoolean [
 		each enabled: aBoolean ]
 ]
 
-{ #category : 'TOREMOVE' }
+{ #category : 'accessing' }
 SpPresenter >> extent [
-	^ extent
+	"Usually a presenter does not set its extent explicitly, it does it by defining a class method named defaultPreferredExtent. If extent is not set, by default return its preferredExtent."
+	
+	^ extent ifNil: [ self preferredExtent ]
 ]
 
-{ #category : 'TOREMOVE' }
+{ #category : 'accessing' }
 SpPresenter >> extent: aPoint [
 	^ extent := aPoint
 ]
