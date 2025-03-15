@@ -122,7 +122,7 @@ SpGridLayoutAdapterTest >> testColumnSpanColumnHomogeneous [
 		beColumnHomogeneous;
 		add: 'Test' atPoint: 1 @ 1 span: 2 @ 1;
 		add: 'Other label test' atPoint: 1 @ 2;
-		add: 'span column' at: 2 @ 2.
+		add: 'span column' atPoint: 2 @ 2.
 
 	self openInstance.
 
@@ -139,7 +139,7 @@ SpGridLayoutAdapterTest >> testColumnSpanColumnNotHomogeneous [
 		beColumnNotHomogeneous;
 		add: 'Test' atPoint: 1 @ 1 span: 2 @ 1;
 		add: 'Other' atPoint: 1 @ 2;
-		add: 'span column, larger' at: 2 @ 2.
+		add: 'span column, larger' atPoint: 2 @ 2.
 
 	self openInstance.
 
@@ -188,7 +188,7 @@ SpGridLayoutAdapterTest >> testRowSpanRowHomogeneous [
 		add: (presenter newMorph morph: testMorph)
 		atPoint: 2 @ 1
 		span: 1 @ 2;
-		add: 'Test 2' at: 1 @ 2.
+		add: 'Test 2' atPoint: 1 @ 2.
 
 	self openInstance.
 	self
@@ -212,7 +212,7 @@ SpGridLayoutAdapterTest >> testRowSpanRowNotHomogeneous [
 		add: (presenter newMorph morph: testMorph)
 		atPoint: 2 @ 1
 		span: 1 @ 2;
-		add: 'Test 2' at: 1 @ 2.
+		add: 'Test 2' atPoint: 1 @ 2.
 
 	self openInstance.
 
