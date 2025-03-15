@@ -78,7 +78,13 @@ SpDialogPresenter class >> documentExampleCode [
 		                 detect: [ :method | method protocolName = #example and: [ method selector = #exampleModal ] ]
 		                 ifNone: [ ^ nil ].
 
-	^ (exampleMethod sourceCode lines allButFirst reject: [ :each | each trimLeft beginsWith: '<' ]) asStringWithCr trimmed "Remove method name" "Remove pragmas"
+	^ ((exampleMethod sourceCode lines
+		"Remove method name"
+		allButFirst
+		"Remove pragmas"
+		reject: [ :each | each trimLeft beginsWith: '<' ])
+		joinUsing: Character cr)
+			trimmed
 ]
 
 { #category : 'documentation' }
