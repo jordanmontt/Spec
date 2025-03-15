@@ -52,6 +52,38 @@ SpPresenterTest >> testAsWindow [
 		equals: presenter application defaultWindowPresenterClass
 ]
 
+{ #category : 'tests - extent' }
+SpPresenterTest >> testExtentWhenNotSetIsPreferredExtent [
+
+	| presenterClass |
+	presenterClass := SpPresenter newAnonymousSubclass.
+	presenterClass compile: 'defaultLayout ^ SpGridLayout new'.
+	presenterClass compile: 'initializePresenters self layout: SpBoxLayout newLeftToRight'.
+	presenterClass class compile: 'defaultPreferredExtent ^ 500@600'.
+	
+	presenter := presenterClass new.
+	self assert: presenter extent equals: 500@600.
+	
+]
+
+{ #category : 'tests - extent' }
+SpPresenterTest >> testExtentWhenSet [
+
+	| presenterClass |
+	presenterClass := SpPresenter newAnonymousSubclass.
+	presenterClass compile: 'defaultLayout ^ SpGridLayout new'.
+	presenterClass compile: 'initializePresenters self layout: SpBoxLayout newLeftToRight'.
+	presenterClass class compile: 'defaultPreferredExtent ^ 500@600'.
+	
+	presenter := presenterClass new.
+	presenter extent: 101@202.
+	self assert: presenter extent  equals: 101@202.
+	
+	"It is not clear what is the situation when we set the extent: and we resized we window.
+	Normally the last resized value should be returned by the extent."
+	
+]
+
 { #category : 'tests - layout' }
 SpPresenterTest >> testLayoutIsDefaultLayoutWhenDefaultLayoutAndDefaultSpecDefined [
 	| presenterClass |
@@ -86,7 +118,10 @@ SpPresenterTest >> testPreferredExtentIsDynamicallyComputed [
 	It is not stored. 
 	
 	This is only on resize (if resize is allowed) that the last size is stored.
-	See companion test."
+	See companion test.
+	But pay attention Morphic announce a resize when the extent is set and not when 
+	the user explicitly resize the windown so the logic is bogus even if the user does not see it.
+	"
 	
 	| presenterClass |
 	presenterClass := SpPresenter newAnonymousSubclass.
@@ -108,7 +143,9 @@ SpPresenterTest >> testPreferredExtentIsDynamicallyComputed [
 { #category : 'tests - extent' }
 SpPresenterTest >> testPreferredExtentIsNotStoredOnResizeWhenNotResizable [
 	"This test shows that resize and its effect on the extent being remembered is only 
-	available when resize is true"
+	available when resize is true.
+	Pay attention Morphic announce a resize when the extent is set and not when 
+	the user explicitly resize the windown so the logic is bogus even if the user does not see it."
 	
 	| presenterClass window |
 	presenterClass := SpPresenter newAnonymousSubclass.
@@ -138,6 +175,9 @@ SpPresenterTest >> testPreferredExtentIsNotStoredOnResizeWhenNotResizable [
 
 { #category : 'tests - extent' }
 SpPresenterTest >> testPreferredExtentIsStoredOnResize [
+	"Pay attention Morphic announce a resize when the extent is set and not when 
+	the user explicitly resize the windown so the logic is bogus even if the user does not see it."
+
 	| presenterClass window |
 	presenterClass := SpPresenter newAnonymousSubclass.
 	presenterClass compile: 'defaultLayout ^ SpGridLayout new'.
