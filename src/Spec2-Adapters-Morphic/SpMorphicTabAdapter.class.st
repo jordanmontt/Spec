@@ -93,3 +93,9 @@ SpMorphicTabAdapter >> remove: aPresenter [
 		morph := adapter widget.
 		widget removePage: (widget pages detect: [ :each | each actualPageMorph = morph ]) ]
 ]
+
+{ #category : 'accessing' }
+SpMorphicTabAdapter >> selectIndex: aNumber [
+	
+	self widget selectedPageIndex: aNumber
+]
