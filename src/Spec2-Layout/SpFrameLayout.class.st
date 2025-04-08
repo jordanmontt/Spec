@@ -31,20 +31,20 @@ SpFrameLayout >> adapterName [
 	^ #FrameLayoutAdapter
 ]
 
-{ #category : 'adding' }
+{ #category : 'accessing' }
 SpFrameLayout >> add: aNameOrPresenter [
 
 	self child: aNameOrPresenter
 ]
 
-{ #category : 'adding' }
+{ #category : 'accessing' }
 SpFrameLayout >> add: aPresenter withConstraints: aBlock [
 	
 	super add: aPresenter withConstraints: aBlock.
 	self announceChildAdded: aPresenter.
 ]
 
-{ #category : 'adding' }
+{ #category : 'accessing' }
 SpFrameLayout >> child: aNameOrPresenter [
 
 	child ifNotNil: [ self remove: child ].
