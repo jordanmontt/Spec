@@ -1,10 +1,6 @@
 Class {
 	#name : 'SpMorphicFrameLayoutTest',
 	#superclass : 'TestCase',
-	#instVars : [
-		'instance',
-		'backend'
-	],
 	#category : 'Spec2-Morphic-Backend-Tests',
 	#package : 'Spec2-Morphic-Backend-Tests'
 }
