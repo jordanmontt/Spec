@@ -31,27 +31,30 @@ SpFrameLayout >> adapterName [
 	^ #FrameLayoutAdapter
 ]
 
-{ #category : 'adding' }
+{ #category : 'accessing' }
 SpFrameLayout >> add: aNameOrPresenter [
 
 	self child: aNameOrPresenter
 ]
 
-{ #category : 'adding' }
+{ #category : 'accessing' }
 SpFrameLayout >> add: aPresenter withConstraints: aBlock [
 	
 	super add: aPresenter withConstraints: aBlock.
 	self announceChildAdded: aPresenter.
 ]
 
-{ #category : 'adding' }
+{ #category : 'accessing' }
 SpFrameLayout >> child: aNameOrPresenter [
 
-	child ifNotNil: [ self remove: child ].
-	child := aNameOrPresenter.
-	self 
-		add: aNameOrPresenter 
-		withConstraints: [ :constraints | ].
+    child ifNotNil: [ 
+        self replace: child with: aNameOrPresenter.
+        ^ self ].
+    
+    child := aNameOrPresenter.
+    self 
+        add: aNameOrPresenter 
+        withConstraints: [ :constraints | ].
 ]
 
 { #category : 'private' }
@@ -100,15 +103,17 @@ SpFrameLayout >> replace: aPresenter with: otherPresenter [
 
 { #category : 'replacing' }
 SpFrameLayout >> replace: aPresenter with: otherPresenter withConstraints: constraints [
-	"Replace aPresenter with otherPresenter"
-	
-	children
-		replaceKey: aPresenter
-		with: otherPresenter.
+    "Replace aPresenter with otherPresenter"
+    
+    children
+        replaceKey: aPresenter
+        with: otherPresenter.
 
-	self withAdapterDo: [ :anAdapter |
-		anAdapter 
-			replace: aPresenter 
-			with: otherPresenter
-			withConstraints: constraints ]
+    self withAdapterDo: [ :anAdapter |
+        anAdapter 
+            replace: aPresenter 
+            with: otherPresenter
+            withConstraints: constraints ].
+            
+    child := otherPresenter
 ]
