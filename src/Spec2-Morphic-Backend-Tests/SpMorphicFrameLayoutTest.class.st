@@ -10,6 +10,17 @@ Class {
 }
 
 { #category : 'tests' }
+SpMorphicFrameLayoutTest >> testFrameWithoutChildThrowsAnError [
+	| presenter  |
+
+	presenter := SpPresenter new.
+	presenter layout: SpFrameLayout new.
+
+	presenter build.
+	self assert: presenter adapter children isEmpty
+]
+
+{ #category : 'tests' }
 SpMorphicFrameLayoutTest >> testFrameWithoutLabelOpensWithoutError [
 	| presenter tabPresenter1 |
 	

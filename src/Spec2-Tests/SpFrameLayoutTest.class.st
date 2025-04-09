@@ -31,11 +31,3 @@ SpFrameLayoutTest >> testFrameCanNestLayouts [
 	self assert: childPresenterInTab equals: tabPresenter1.
 	self assert: childPresenterInTab adapter isNotNil
 ]
-
-{ #category : 'tests' }
-SpFrameLayoutTest >> testFrameWithoutChildThrowsAnError [
-
-	
-
-	
-]
