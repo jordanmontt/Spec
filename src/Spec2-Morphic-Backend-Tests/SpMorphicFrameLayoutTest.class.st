@@ -38,3 +38,27 @@ SpMorphicFrameLayoutTest >> testFrameWithoutLabelOpensWithoutError [
 	
 	self assert: presenter adapter widgetLabel isNotNil
 ]
+
+{ #category : 'tests' }
+SpMorphicFrameLayoutTest >> testReplaceChild [
+	| presenter widgetChild presenterToChange |
+
+	presenter := SpPresenter new.
+	presenter layout: (SpFrameLayout new 
+		child: (presenter newLabel 
+					label: 'Tab1 Inside'; 
+					yourself)
+		yourself).
+		
+	presenter build.
+	widgetChild := presenter adapter childrenWidgets anyOne.
+	presenter layout child: ((presenterToChange := presenter newLabel) 
+					label: 'Tab2 Inside'; 
+					yourself).
+	
+	self deny: widgetChild equals: presenter adapter childrenWidgets anyOne.
+	self 
+		assert: presenterToChange adapter widget 
+		equals: presenter adapter childrenWidgets anyOne
+	
+]
