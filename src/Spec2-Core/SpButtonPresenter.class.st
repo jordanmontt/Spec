@@ -118,7 +118,7 @@ SpButtonPresenter >> performAction [
 	actionPerformed := nil
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'private' }
 SpButtonPresenter >> registerShortcut: newShortcut [
 
 	newShortcut ifNil: [ ^ self ].
