@@ -12,7 +12,6 @@ Class {
 		'buttonHighlighted',
 		'buttonWithColor',
 		'buttonWithMenu',
-		'buttonWithShortcut',
 		'buttonWithHelp',
 		'buttonWithDifferentFont'
 	],
