@@ -120,7 +120,6 @@ SpButtonPresenter >> performAction [
 
 { #category : 'as yet unclassified' }
 SpButtonPresenter >> registerShortcut: newShortcut [
-	| receiver |
 
 	newShortcut ifNil: [ ^ self ].
 	self withWindowDo: [ :receiver |
