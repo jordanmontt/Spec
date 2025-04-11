@@ -24,7 +24,7 @@ Class {
 { #category : 'initialization' }
 SpDemoButtonsPresenter >> connectPresenters [
 
-	buttonWithShortcut action: [ self inform: 'button with shortcut pressed' ]																																														
+	"buttonWithShortcut action: [ self inform: 'button with shortcut pressed' ]"																																														
 ]
 
 { #category : 'layout' }
@@ -44,9 +44,9 @@ SpDemoButtonsPresenter >> defaultLayout [
 			add: buttonWithColor;
 			nextRow;
 			add: buttonWithMenu;
-			add: buttonWithShortcut;
+			"add: buttonWithShortcut;"
 			add: buttonWithHelp;
-			nextRow;
+			"nextRow;"
 			add: buttonWithDifferentFont ]
 ]
 
@@ -78,10 +78,10 @@ SpDemoButtonsPresenter >> initializePresenters [
 		label: 'with menu';
 		actions: self subMenuActions;
 		yourself.
-	buttonWithShortcut := self newButton
-		shortcut: $o meta;
-		label: 'with shortcut';
-		yourself.
+	"buttonWithShortcut := self newButton
+		shortcut: $k ctrl;
+		label: 'with shortcut ', $k ctrl printString;
+		yourself."
 	buttonWithHelp := self newButton
 		label: 'with help';
 		help:
