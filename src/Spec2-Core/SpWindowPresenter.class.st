@@ -285,6 +285,14 @@ SpWindowPresenter >> initialExtent: anExtent [
 ]
 
 { #category : 'api' }
+SpWindowPresenter >> initialPosition [
+	"Answer initial position of the window (if previously set).
+	 If initial position is not set, the backend will place the window within its own logic."
+
+	^ initialPosition
+]
+
+{ #category : 'api' }
 SpWindowPresenter >> initialPosition: aPoint [
 	"Set initial position of the window. 
 	 `aPoint` is an instance of `Point`, indicating x@y coordinates
